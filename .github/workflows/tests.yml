@@ -1,0 +1,33 @@
+name: Run Unit Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master, dev ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: CloudSealAPI
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore CloudSealAPI.sln
+
+      - name: Build solution
+        run: dotnet build CloudSealAPI.sln --no-restore
+
+      - name: Run tests
+        run: dotnet test CloudSealAPI.sln --no-build --verbosity normal
