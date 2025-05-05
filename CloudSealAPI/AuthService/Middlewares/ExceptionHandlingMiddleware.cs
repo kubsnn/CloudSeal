@@ -16,7 +16,7 @@ public class ExceptionHandlingMiddleware
     {
         try
         {
-            await _next(context); // przejdź dalej w potoku
+            await _next(context); // call the next middleware in the pipeline
         } 
         catch (Exception ex)
         {

@@ -63,7 +63,24 @@ namespace AuthService
 
             app.MapControllers();
 
+            ApplyMigrations(app.Services);
+
             app.Run();
+        }
+
+        private static void ApplyMigrations(IServiceProvider serviceProvider)
+        {
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
+                if (db.Database.IsRelational())
+                {
+                    db.Database.Migrate();
+                }
+            }
         }
     }
 }
+
+
+      

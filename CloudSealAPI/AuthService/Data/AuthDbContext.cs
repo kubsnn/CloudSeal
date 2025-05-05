@@ -7,11 +7,6 @@ public class AuthDbContext : DbContext
 {
     public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
     {
-        if (Database.IsRelational())
-        {
-            Database.Migrate();
-        }
-
     }
     public DbSet<User> Users { get; set; } = null!;
 
