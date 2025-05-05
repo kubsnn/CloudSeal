@@ -1,0 +1,71 @@
+﻿syntax = "proto3";
+
+package cloudseal;
+
+service CloudSeal {
+  // Uwierzytelnianie
+  rpc Register       (AuthRequest)     returns (AuthResponse);
+  rpc Login          (AuthRequest)     returns (AuthResponse);
+
+  // Vault
+  rpc UploadVault    (VaultRequest)    returns (Status);
+  rpc DownloadVault  (VaultQuery)      returns (VaultResponse);
+
+  // Pliki (z użyciem ścieżek lokalnych)
+  rpc UploadFile     (FileTransferPath) returns (Status);
+  rpc DownloadFile   (FileTransferPath) returns (Status);
+  rpc ListFiles      (AuthToken)        returns (FileList);
+  rpc GetStats       (AuthToken)        returns (GlobalStats);
+}
+
+// ───── Autoryzacja ─────
+message AuthRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message AuthResponse {
+  bool success = 1;
+  string message = 2;
+  string token = 3;
+}
+
+message AuthToken {
+  string token = 1;
+}
+
+// ───── Vault ─────
+message VaultRequest {
+  string token = 1;
+  string local_path = 2;
+}
+
+message VaultQuery {
+  string token = 1;
+}
+
+message VaultResponse {
+  string local_path = 1;
+}
+
+// ───── Pliki ─────
+message FileTransferPath {
+  string token = 1;
+  string remote_name = 2;
+  string local_path = 3;
+}
+
+// ───── Inne ─────
+message FileList {
+  repeated string names = 1;
+}
+
+message GlobalStats {
+  int64 total = 1;
+  int64 free  = 2;
+}
+
+message Status {
+  bool success = 1;
+  string message = 2;
+}
