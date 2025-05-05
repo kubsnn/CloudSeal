@@ -1,0 +1,59 @@
+name: GatewayService CI/CD
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'CloudSealAPI/GatewayService/**'
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: kubsnn/gatewayservice
+  DOCKERFILE_PATH: ./CloudSealAPI/GatewayService/Dockerfile
+  CONTEXT_PATH: ./CloudSealAPI
+  CONTAINER_APP_NAME: cloudseal-gateway
+  RESOURCE_GROUP: cloudseal-rg
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Push Docker Image
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ env.CONTEXT_PATH }}
+          file: ${{ env.DOCKERFILE_PATH }}
+          push: true
+          tags: ${{ env.IMAGE_NAME }}:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Azure Container App
+    needs: build
+
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy latest image
+        run: |
+          az containerapp update \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --image ${{ env.IMAGE_NAME }}:latest
