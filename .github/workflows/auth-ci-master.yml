@@ -6,6 +6,8 @@ on:
     paths:
       - 'CloudSealAPI/AuthService/**'
       - 'CloudSealAPI/AuthService.Tests/**'
+      - '.github/workflows/auth-ci-master.yml'
+
   workflow_dispatch:
 
 env:

@@ -6,11 +6,13 @@ on:
     paths:
       - 'CloudSealAPI/AuthService/**'
       - 'CloudSealAPI/AuthService.Tests/**'
+      - '.github/workflows/auth-ci-dev.yml'
   pull_request:
     branches: [ master, dev ]
     paths:
       - 'CloudSealAPI/AuthService/**'
       - 'CloudSealAPI/AuthService.Tests/**'
+      - '.github/workflows/auth-ci-dev.yml'
   workflow_dispatch:
 
 jobs:
