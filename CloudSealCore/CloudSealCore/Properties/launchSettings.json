@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CloudSealCore": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

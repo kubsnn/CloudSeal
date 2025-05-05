@@ -54,7 +54,7 @@ namespace AuthService
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection(); - containerized app, no need for HTTPS
             app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseAuthentication();

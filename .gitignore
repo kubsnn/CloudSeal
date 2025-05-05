@@ -398,3 +398,21 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# C++
+*.sdf
+*.suo
+
+# cmake
+CMakeFiles
+CMakeCache.txt
+CMakeScripts
+CMakeOutput.log
+CMakeError.log
+CMakeLists.txt.user
+CMakeLists.txt.user.cmake
+CMakeLists.txt.user.ninja
+CMakeLists.txt.user.make
+*.cmake
+*.ninja
+gRPC-Client/build/

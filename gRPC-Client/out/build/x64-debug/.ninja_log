@@ -1,0 +1,17 @@
+# ninja log v6
+7	54	7680731316654985	cloudseal.pb.h	5eda17bfd729afc6
+7	54	7680731316654985	cloudseal.pb.cc	5eda17bfd729afc6
+7	54	7680731316654985	C:/Users/kubs/source/repos/gRPC-Server/out/build/x64-debug/cloudseal.pb.h	5eda17bfd729afc6
+7	54	7680731316654985	C:/Users/kubs/source/repos/gRPC-Server/out/build/x64-debug/cloudseal.pb.cc	5eda17bfd729afc6
+12	58	7680731316689985	C:/Users/kubs/source/repos/gRPC-Server/proto-generated/cloudseal.grpc.pb.cc	c221eac27280e1e1
+12	58	7680731316689985	C:/Users/kubs/source/repos/gRPC-Server/proto-generated/cloudseal.grpc.pb.h	c221eac27280e1e1
+58	1358	7680731316719997	CMakeFiles/proto_objects.dir/cloudseal.pb.cc.obj	f7a63ff180e6791d
+61	2033	7680731316754999	CMakeFiles/proto_objects.dir/proto-generated/cloudseal.grpc.pb.cc.obj	7b944b3d3e9c2425
+22	70	7680731588541623	cloudseal.pb.h	5eda17bfd729afc6
+22	70	7680731588541623	cloudseal.pb.cc	5eda17bfd729afc6
+22	70	7680731588541623	C:/Users/kubs/source/repos/gRPC-Server/out/build/x64-debug/cloudseal.pb.h	5eda17bfd729afc6
+22	70	7680731588541623	C:/Users/kubs/source/repos/gRPC-Server/out/build/x64-debug/cloudseal.pb.cc	5eda17bfd729afc6
+28	73	7680731588576635	C:/Users/kubs/source/repos/gRPC-Server/proto-generated/cloudseal.grpc.pb.cc	c221eac27280e1e1
+28	73	7680731588576635	C:/Users/kubs/source/repos/gRPC-Server/proto-generated/cloudseal.grpc.pb.h	c221eac27280e1e1
+74	1397	7680731588616624	CMakeFiles/proto_objects.dir/cloudseal.pb.cc.obj	f7a63ff180e6791d
+77	2054	7680731588646624	CMakeFiles/proto_objects.dir/proto-generated/cloudseal.grpc.pb.cc.obj	7b944b3d3e9c2425
