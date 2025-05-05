@@ -1,15 +1,25 @@
-name: Run Unit Tests
+name: AuthService CI (Dev)
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev ]
+    paths:
+      - 'CloudSealAPI/AuthService/**'
+      - 'CloudSealAPI/AuthService.Tests/**'
+      - '.github/workflows/auth-ci-dev.yml'
   pull_request:
     branches: [ master, dev ]
+    paths:
+      - 'CloudSealAPI/AuthService/**'
+      - 'CloudSealAPI/AuthService.Tests/**'
+      - '.github/workflows/auth-ci-dev.yml'
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    name: Run Unit Tests (Only)
+
     defaults:
       run:
         working-directory: CloudSealAPI
