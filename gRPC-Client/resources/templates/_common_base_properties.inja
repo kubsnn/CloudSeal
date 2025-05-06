@@ -1,0 +1,19 @@
+id: {{ id | default("qmlObject") }}
+{% if visible is defined %}
+visible: {{ visible }}
+{% endif %}
+{% if x is defined %}
+x: {{ x }}
+{% endif %}
+{% if y is defined %}
+y: {{ y }}
+{% endif %}
+{% if width is defined %}
+width: {{ width }}
+{% endif %}
+{% if height is defined %}
+height: {{ height }}
+{% endif %}
+{% if locale %}
+locale: Qt.locale("{{ locale }}")
+{% endif %}

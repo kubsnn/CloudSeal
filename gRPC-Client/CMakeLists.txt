@@ -3,10 +3,20 @@ project(gRPCServer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(FetchContent)
+
+FetchContent_Declare(
+    inja
+    GIT_REPOSITORY https://github.com/pantor/inja.git
+    GIT_TAG v3.4.0 # Możesz zmienić na inną wersję lub commit
+)
+FetchContent_MakeAvailable(inja)
 
 # Znalezienie bibliotek
 find_package(Protobuf CONFIG REQUIRED)
 find_package(gRPC CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(inja CONFIG REQUIRED)
 
 set(PROTO_GENERATED_DIR ${CMAKE_SOURCE_DIR}/proto-generated)
 
@@ -15,6 +25,11 @@ if(NOT DEFINED gRPC_CPP_PLUGIN_EXECUTABLE)
       "C:/vcpkg/installed/x64-windows/tools/grpc/grpc_cpp_plugin.exe")
 endif()
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+find_package(Qt6 REQUIRED COMPONENTS Widgets Core Network Gui Qml Quick Grpc Protobuf)
 # Pokaż ścieżkę (debug)
 message(STATUS "gRPC_CPP_PLUGIN_EXECUTABLE = ${gRPC_CPP_PLUGIN_EXECUTABLE}")
 
@@ -82,4 +97,5 @@ target_link_libraries(proto_objects PUBLIC
 add_library(proto::proto ALIAS proto_objects)
 
 # Podprojekt z serwerem
+include_directories(${CMAKE_SOURCE_DIR}/resources)
 add_subdirectory(src)

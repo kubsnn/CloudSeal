@@ -415,4 +415,4 @@ CMakeLists.txt.user.ninja
 CMakeLists.txt.user.make
 *.cmake
 *.ninja
-gRPC-Client/build/
+gRPC-Client/out

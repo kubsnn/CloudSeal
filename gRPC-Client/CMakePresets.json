@@ -11,7 +11,8 @@
             "gRPC_CPP_PLUGIN_EXECUTABLE": "C:/vcpkg/installed/x64-windows/tools/grpc/grpc_cpp_plugin.exe",
             "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "CMAKE_C_COMPILER": "cl.exe",
-            "CMAKE_CXX_COMPILER": "cl.exe"
+            "CMAKE_CXX_COMPILER": "cl.exe",
+            "CMAKE_PREFIX_PATH": "C:/Qt/6.9.0/msvc2022_64/lib/cmake"
           },
             "condition": {
                 "type": "equals",
