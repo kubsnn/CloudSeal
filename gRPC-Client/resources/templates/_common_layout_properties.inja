@@ -27,6 +27,19 @@ topInset: {{ topInset }}
 bottomInset: {{ bottomInset }}
 {% endif %}
 
+{% if leftMargin is defined %}
+leftMargin: {{ leftMargin }}
+{% endif %}
+{% if rightMargin is defined %}
+rightMargin: {{ rightMargin }}
+{% endif %}
+{% if topMargin is defined %}
+topMargin: {{ topMargin }}
+{% endif %}
+{% if bottomMargin is defined %}
+bottomMargin: {{ bottomMargin }}
+{% endif %}
+
 {% if anchors_fill %}
 anchors.fill: {{ anchors_fill }}
 {% endif %}

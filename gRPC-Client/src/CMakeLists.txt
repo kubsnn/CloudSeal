@@ -1,6 +1,7 @@
 ﻿add_executable(grpc_cpp_server
     main.cpp
     resources.qrc
+    utils/generate_uuid.cpp
 )
 
 target_link_libraries(grpc_cpp_server
