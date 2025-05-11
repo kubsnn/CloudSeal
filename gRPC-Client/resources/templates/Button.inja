@@ -80,4 +80,8 @@ Button {
     {% for key, value in extra_properties.items() if extra_properties %}
     {{ key }}: {{ value }}
     {% endfor %}
+
+    {% if child %}
+    {{ child }}
+    {% endif %}
 }
