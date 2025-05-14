@@ -7,6 +7,7 @@ CloudSeal is a secure, microservice-based platform for managing encrypted file s
 The system is built using ASP.NET Core microservices, a Qt 6 desktop client, and a .NET background service connected via gRPC.
 
 ![Test & Deploy Auth](https://github.com/kubsnn/CloudSeal/actions/workflows/auth-ci-master.yml/badge.svg)
+![Test & Deploy User](https://github.com/kubsnn/CloudSeal/actions/workflows/user-ci-master.yml/badge.svg)
 
 
 ---
