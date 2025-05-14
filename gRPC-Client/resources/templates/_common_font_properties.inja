@@ -1,0 +1,10 @@
+{% if font_family or font_pointSize or font_bold or font_italic or font_underline or font_strikeout %}
+font: Qt.font({
+    {% if font_family %}family: "{{ font_family }}",{% endif %}
+    {% if font_pointSize %}pointSize: {{ font_pointSize }},{% endif %}
+    {% if font_bold %}bold: {{ font_bold }},{% endif %}
+    {% if font_italic %}italic: {{ font_italic }},{% endif %}
+    {% if font_underline %}underline: {{ font_underline }},{% endif %}
+    {% if font_strikeout %}strikeout: {{ font_strikeout }}{% endif %}
+})
+{% endif %}

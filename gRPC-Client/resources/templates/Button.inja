@@ -1,0 +1,87 @@
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+
+Button {
+    {% include "_common_base_properties.inja" %}
+
+    // --- Button Specific Properties ---
+    text: {{ text | default(""Button"") }}
+
+    // --- Appearance ---
+    {% include "_common_font_properties.inja" %}
+    flat: {{ flat | default(false) }}
+    display: {{ display | default("Button.TextBesideIcon") }} // Possible values: Button.IconOnly, Button.TextOnly, Button.TextBesideIcon, Button.TextUnderIcon
+
+    // --- Icon (Button specific) ---
+    {% if icon_name or icon_source or icon_color or icon_width or icon_height %}
+    icon {
+        {% if icon_name %}name: "{{ icon_name }}" {% endif %}
+        {% if icon_source %}source: "{{ icon_source }}" {% endif %}
+        {% if icon_color %}color: "{{ icon_color }}" {% endif %}
+        {% if icon_width %}width: {{ icon_width }} {% endif %}
+        {% if icon_height %}height: {{ icon_height }} {% endif %}
+    }
+    {% endif %}
+
+    // --- Behavior ---
+    {% include "_common_behavior_properties.inja" %}
+    // Button specific behavior
+    checkable: {{ checkable | default(false) }}
+    checked: {{ checked | default(false) }}
+    autoExclusive: {{ autoExclusive | default(false) }}
+    autoRepeat: {{ autoRepeat | default(false) }}
+    {% if autoRepeat %}
+    autoRepeatDelay: {{ autoRepeatDelay | default(500) }}
+    autoRepeatInterval: {{ autoRepeatInterval | default(100) }}
+    {% endif %}
+
+    // --- Sizing and Layout ---
+    {% include "_common_layout_properties.inja" %}
+    // Button specific layout
+    spacing: {{ spacing | default(4) }} // Spacing between icon and text
+
+    // --- Customization (Button specific) ---
+    // background: Rectangle { color: "lightblue" }
+    // contentItem: Text { text: control.text; font: control.font; color: "blue"; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; }
+    // indicator: Rectangle { width: 10; height: 10; color: control.checked ? "green" : "gray"; visible: control.checkable } // For checkable buttons
+
+    // --- Signals (Button specific) ---
+    onClicked: {
+        // console.log((id || "{{ id | default('myButton') }}") + " clicked")
+        {{ onClicked_action | default("") }}
+    }
+    onPressed: {
+        // console.log((id || "{{ id | default('myButton') }}") + " pressed")
+        {{ onPressed_action | default("") }}
+    }
+    onReleased: {
+        // console.log((id || "{{ id | default('myButton') }}") + " released")
+        {{ onReleased_action | default("") }}
+    }
+    onCanceled: {
+        // console.log((id || "{{ id | default('myButton') }}") + " canceled")
+        {{ onCanceled_action | default("") }}
+    }
+    {% if checkable %}
+    onToggled: {
+        // console.log((id || "{{ id | default('myButton') }}") + " toggled: " + checked)
+        {{ onToggled_action | default("") }}
+    }
+    {% endif %}
+    onDoubleClicked: {
+        // console.log((id || "{{ id | default('myButton') }}") + " doubleClicked")
+        {{ onDoubleClicked_action | default("") }}
+    }
+
+    // --- Accessibility ---
+    {% include "_common_accessibility_properties.inja" %}
+
+    // --- Extra properties ---
+    {% for key, value in extra_properties.items() if extra_properties %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+
+    {% if child %}
+    {{ child }}
+    {% endif %}
+}

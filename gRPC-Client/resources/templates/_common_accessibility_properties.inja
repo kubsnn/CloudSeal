@@ -1,0 +1,9 @@
+{% if accessible_name %}
+Accessible.name: "{{ accessible_name }}"
+{% endif %}
+{% if accessible_description %}
+Accessible.description: "{{ accessible_description }}"
+{% endif %}
+{% if accessible_role %}
+Accessible.role: {{ accessible_role }} // e.g. Accessible.Button, Accessible.Text, etc.
+{% endif %}

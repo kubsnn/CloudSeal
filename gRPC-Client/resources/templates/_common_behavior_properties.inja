@@ -1,0 +1,4 @@
+enabled: {{ enabled | default(true) }}
+focusPolicy: {{ focusPolicy | default("Qt.StrongFocus") }}
+hoverEnabled: {{ hoverEnabled | default(true) }}
+tooltip: {{ tooltip | default("""") }}

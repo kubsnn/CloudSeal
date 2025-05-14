@@ -1,0 +1,54 @@
+implicitWidth: {{ implicitWidth | default("undefined") }}
+implicitHeight: {{ implicitHeight | default("undefined") }}
+
+{% if leftPadding is defined %}
+leftPadding: {{ leftPadding }}
+{% endif %}
+{% if rightPadding is defined %}
+rightPadding: {{ rightPadding }}
+{% endif %}
+{% if topPadding is defined %}
+topPadding: {{ topPadding }}
+{% endif %}
+{% if bottomPadding is defined %}
+bottomPadding: {{ bottomPadding }}
+{% endif %}
+
+{% if leftInset is defined %}
+leftInset: {{ leftInset }}
+{% endif %}
+{% if rightInset is defined %}
+rightInset: {{ rightInset }}
+{% endif %}
+{% if topInset is defined %}
+topInset: {{ topInset }}
+{% endif %}
+{% if bottomInset is defined %}
+bottomInset: {{ bottomInset }}
+{% endif %}
+
+{% if leftMargin is defined %}
+leftMargin: {{ leftMargin }}
+{% endif %}
+{% if rightMargin is defined %}
+rightMargin: {{ rightMargin }}
+{% endif %}
+{% if topMargin is defined %}
+topMargin: {{ topMargin }}
+{% endif %}
+{% if bottomMargin is defined %}
+bottomMargin: {{ bottomMargin }}
+{% endif %}
+
+{% if anchors_fill %}
+anchors.fill: {{ anchors_fill }}
+{% endif %}
+{% if anchors_centerIn %}
+anchors.centerIn: {{ anchors_centerIn }}
+{% endif %}
+{# You can add more specific anchors or use a loop for a dictionary of anchors #}
+{% if anchors and anchors is mapping %}
+{% for anchor_key, anchor_value in anchors.items() %}
+anchors.{{ anchor_key }}: {{ anchor_value }}
+{% endfor %}
+{% endif %}

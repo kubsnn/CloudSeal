@@ -1,20 +1,20 @@
-name: AuthService CI/CD
+name: UserService CI/CD
 
 on:
   push:
     branches: [ master ]
     paths:
-      - 'CloudSealAPI/AuthService/**'
-      - 'CloudSealAPI/AuthService.Tests/**'
-      - '.github/workflows/auth-ci-master.yml'
+      - 'CloudSealAPI/UserService/**'
+      - 'CloudSealAPI/UserService.Tests/**'
+      - '.github/workflows/user-ci-master.yml'
 
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: kubsnn/authservice
-  DOCKERFILE_PATH: ./CloudSealAPI/AuthService/Dockerfile
+  IMAGE_NAME: kubsnn/UserService
+  DOCKERFILE_PATH: ./CloudSealAPI/UserService/Dockerfile
   CONTEXT_PATH: ./CloudSealAPI
-  CONTAINER_APP_NAME: cloudseal-auth
+  CONTAINER_APP_NAME: cloudseal-user
   RESOURCE_GROUP: cloudseal-rg
 
 jobs:
@@ -35,13 +35,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore AuthService.Tests/AuthService.Tests.csproj
+        run: dotnet restore UserService.Tests/UserService.Tests.csproj
 
       - name: Build project
-        run: dotnet build AuthService.Tests/AuthService.Tests.csproj --no-restore
+        run: dotnet build UserService.Tests/UserService.Tests.csproj --no-restore
 
       - name: Run unit tests
-        run: dotnet test AuthService.Tests/AuthService.Tests.csproj --no-build --verbosity normal
+        run: dotnet test UserService.Tests/UserService.Tests.csproj --no-build --verbosity normal
 
   docker:
     runs-on: ubuntu-latest
