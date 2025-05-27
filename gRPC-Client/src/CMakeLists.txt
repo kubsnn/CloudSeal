@@ -1,22 +1,31 @@
-﻿add_executable(grpc_cpp_server
+﻿add_executable(app
     main.cpp
+    grpc/client.cpp
+    grpc/client.hpp
     resources.qrc
     utils/generate_uuid.cpp
 )
 
-target_link_libraries(grpc_cpp_server
-    PRIVATE
-        proto::proto
-        gRPC::grpc++_reflection
-        Qt6::Widgets
-        Qt6::Core
-        Qt6::Gui
-        Qt6::Qml
-        Qt6::Quick
-        pantor::inja
-        nlohmann_json::nlohmann_json # Dodaj cel nlohmann_json
+target_link_libraries(app PRIVATE
+    Qt6::Widgets
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Qml
+    Qt6::Quick
+    pantor::inja
+    nlohmann_json::nlohmann_json # Dodaj cel nlohmann_json
+    CloudSealProtos           # biblioteka z kodem wygenerowanym z .proto
+    Qt6::Protobuf        # Qt Protobuf (serializacja obiektów protobuf)
+    Qt6::Grpc            # Qt GRPC (obsługa komunikacji gRPC)
 )
 
-target_include_directories(grpc_cpp_server PRIVATE
-    ${CMAKE_SOURCE_DIR}/proto
-)
+install(TARGETS app RUNTIME DESTINATION bin)
+
+# ----  AUTODEPLOY DLL-ek Qt  ----
+if(WIN32)
+    qt_generate_deploy_app_script(       # tworzy skrypt z wywołaniem windeployqt
+        TARGET app
+        OUTPUT_SCRIPT deploy_script
+    )
+    install(SCRIPT ${deploy_script})     # uruchom skrypt podczas 'cmake --install'
+endif()

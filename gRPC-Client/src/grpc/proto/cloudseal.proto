@@ -1,24 +1,37 @@
 ﻿syntax = "proto3";
 
-package cloudseal;
+package cloudseal.grpc;
 
 service CloudSeal {
-  // Uwierzytelnianie
-  rpc Register       (AuthRequest)     returns (AuthResponse);
-  rpc Login          (AuthRequest)     returns (AuthResponse);
+  rpc Register       (AuthRequest)      returns (AuthResponse);
+  rpc Login          (AuthRequest)      returns (AuthResponse);
 
-  // Vault
-  rpc UploadVault    (VaultRequest)    returns (Status);
-  rpc DownloadVault  (VaultQuery)      returns (VaultResponse);
+  rpc UploadVault    (VaultRequest)     returns (Status);
+  rpc DownloadVault  (VaultQuery)       returns (VaultResponse);
 
-  // Pliki (z użyciem ścieżek lokalnych)
   rpc UploadFile     (FileTransferPath) returns (Status);
   rpc DownloadFile   (FileTransferPath) returns (Status);
   rpc ListFiles      (AuthToken)        returns (FileList);
   rpc GetStats       (AuthToken)        returns (GlobalStats);
 }
 
+// ───── Modele ─────
+
+message CloudFile {
+  string id = 1;
+  string name = 2;
+  string mime_type = 3;
+  int64 size = 4;
+  string created_time = 5; // RFC3339 ISO string (e.g. "2023-05-01T14:30:00Z")
+  string source = 6;
+}
+
+message FileList {
+  repeated CloudFile files = 1;
+}
+
 // ───── Autoryzacja ─────
+
 message AuthRequest {
   string username = 1;
   string password = 2;
@@ -35,6 +48,7 @@ message AuthToken {
 }
 
 // ───── Vault ─────
+
 message VaultRequest {
   string token = 1;
   string local_path = 2;
@@ -48,17 +62,15 @@ message VaultResponse {
   string local_path = 1;
 }
 
-// ───── Pliki ─────
+// ───── Przesyłanie plików ─────
+
 message FileTransferPath {
   string token = 1;
   string remote_name = 2;
   string local_path = 3;
 }
 
-// ───── Inne ─────
-message FileList {
-  repeated string names = 1;
-}
+// ───── Statystyki ─────
 
 message GlobalStats {
   int64 total = 1;

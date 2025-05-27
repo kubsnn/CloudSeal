@@ -26,7 +26,7 @@ namespace UserService.Controllers
         public async Task<IActionResult> PostKey([FromBody] PostKeyRequest request)
         {
             await _userService.InitializeUser(_userId, request.Key);
-
+            Url.Action(nameof(GetKey), "User");
             return Created();
         }
     }
