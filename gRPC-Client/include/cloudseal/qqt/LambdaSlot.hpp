@@ -1,1 +1,1 @@
-#include "../../src/LambdaSlot.hpp"
+#include "../../../src/qqt/LambdaSlot.hpp"

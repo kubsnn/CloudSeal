@@ -8,7 +8,7 @@
 #include <functional>
 #include <cloudseal/logger.hpp>
 #include <string_view>
-#include <cloudseal/qqt/QFunctions.hpp>
+#include <cloudseal/qqt/CallbacksStorage.hpp>
 
 namespace cloudseal::qqt
 {
@@ -24,7 +24,7 @@ namespace cloudseal::qqt
         Callbacks() = default;
 
         template <typename F>
-        void addCallback(std::string_view signal, F &&f)
+        inline void addCallback(std::string_view signal, F &&f)
         {
             using Fn = std::decay_t<F>;
 
@@ -38,38 +38,38 @@ namespace cloudseal::qqt
             }
         }
 
-        QFunctions* build(QObject *object)
+        inline CallbacksStorage* build(QObject *object)
         {
-            auto qFunctions = new QFunctions(object);
+            auto storage = new CallbacksStorage(object);
 
             for (auto &&pair : pairs0)
             {
-                qFunctions->addCallback0(pair.first.c_str(), std::move(pair.second));
+                storage->addCallback0(pair.first.c_str(), std::move(pair.second));
             }
 
             for (auto &&pair : pairs1)
             {
-                qFunctions->addCallback1(pair.first.c_str(), std::move(pair.second));
+                storage->addCallback1(pair.first.c_str(), std::move(pair.second));
             }
 
             // clean up
             clear();
 
-            return qFunctions;
+            return storage;
         }
 
     private:
-        void addCallback0(std::string_view signalName, std::function<void()> &&callback)
+        inline void addCallback0(std::string_view signalName, std::function<void()> &&callback)
         {
             pairs0.emplace_back(signalName, std::move(callback));
         }
 
-        void addCallback1(std::string_view signalName, std::function<void(QVariant)> &&callback)
+        inline void addCallback1(std::string_view signalName, std::function<void(QVariant)> &&callback)
         {
             pairs1.emplace_back(signalName, std::move(callback));
         }
 
-        void clear()
+        inline void clear()
         {
             pairs0.clear();
             pairs1.clear();

@@ -115,7 +115,12 @@
         "syncstream": "cpp",
         "typeindex": "cpp",
         "qquickitem": "cpp",
-        "qobject": "cpp"
+        "qobject": "cpp",
+        "qmetaobject": "cpp",
+        "qguiapplication": "cpp",
+        "qqmlapplicationengine": "cpp",
+        "qvariant": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.formatting": "clangFormat"
 }

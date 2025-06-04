@@ -13,12 +13,12 @@ namespace cloudseal::qqt
         virtual void serialize(nlohmann::json& j) const = 0;
     };
 
-    void to_json(nlohmann::json& j, const IJsonSerializable& obj)
+    inline void to_json(nlohmann::json& j, const IJsonSerializable& obj)
     {
         obj.serialize(j);
     }
 
-    void to_json(nlohmann::json& j, const IJsonSerializable* const& obj)
+    inline void to_json(nlohmann::json& j, const IJsonSerializable* const& obj)
     {
         if (obj)
         {
@@ -28,5 +28,12 @@ namespace cloudseal::qqt
         {
             j = nullptr; // or throw an exception, depending on your design choice
         }
+    }
+
+    inline nlohmann::json serialized(const IJsonSerializable& obj)
+    {
+        nlohmann::json j;
+        obj.serialize(j);
+        return j;
     }
 } // namespace cloudseal::qqt

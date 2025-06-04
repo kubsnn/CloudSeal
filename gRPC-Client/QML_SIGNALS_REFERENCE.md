@@ -1,6 +1,6 @@
-# QML Signals Reference - QFunctions
+# QML Signals Reference - CallbacksStorage
 
-Ta dokumentacja opisuje wszystkie dostępne sygnały obsługiwane przez klasę `QFunctions`.
+Ta dokumentacja opisuje wszystkie dostępne sygnały obsługiwane przez klasę `CallbacksStorage`.
 
 ## Sposób użycia
 
@@ -310,7 +310,7 @@ qfunctions_.connectSignal("componentId", "customSignal(QString, int)", [](const 
 2. **Argumenty**: Argumenty sygnału są dostępne w `QVariantList& args`
 3. **Konwersje**: Użyj metod `QVariant` do konwersji argumentów (`.toString()`, `.toInt()`, `.toBool()`, itp.)
 4. **Lambda funkcje**: Możesz przechwytywać zmienne przez referencję `[&]` lub wartość `[=]`
-5. **Zarządzanie połączeniami**: Połączenia są automatycznie zarządzane przez `QFunctions`
+5. **Zarządzanie połączeniami**: Połączenia są automatycznie zarządzane przez `CallbacksStorage`
 
 ## 🚀 Przykład kompletnego użycia
 

@@ -3,7 +3,7 @@
 #include <cloudseal/qqt/Object.hpp>
 #include <cloudseal/qqt/structures/Size.hpp>
 #include <cloudseal/qqt/structures/Point.hpp>
-#include <cloudseal/qqt/QFunctions.hpp>
+#include <cloudseal/qqt/CallbacksStorage.hpp>
 #include <cloudseal/qqt/jinja/QMLJinja.hpp>
 #include <memory>
 #include <unordered_map>
@@ -18,16 +18,9 @@ namespace cloudseal::qqt::builders
     public:
         virtual ~ObjectBuilder() = default;
 
-        template <typename T>
-        std::string generateQMLString(const T &object) const
-        {
-            QMLJinja jinja;
-            return jinja.process(object.type(), object);
-        }
-
         [[nodiscard]] inline std::shared_ptr<TObject> build() const {
             
-            object_->qmlString = generateQMLString(*object_);
+            object_->qmlString = jinja::QMLJinja().process(object_->type(), object_);
             object_->setCallbacks(std::move(callbacks_));
             return object_;
         }
@@ -145,79 +138,8 @@ namespace cloudseal::qqt::builders
             return *this;
         }
 
-        // // === SIGNAL HANDLING ===
-        
-        // /**
-        //  * @brief Connect a signal to a callback function
-        //  * @param signalName Name of the signal (e.g., "clicked", "valueChanged(int)")
-        //  * @param callback Function to call when signal is triggered
-        //  */
-        // inline ObjecObjectBuilder& onSignal(const std::string& signalName, SignalCallback callback)
-        // {
-        //     object_->signalCallbacks_[signalName] = callback;
-        //     return *this;
-        // }
-
-        // /**
-        //  * @brief Connect a simple signal with no arguments
-        //  * @param signalName Name of the signal
-        //  * @param callback Function to call when signal is triggered
-        //  */
-        // inline ObjecObjectBuilder& onSignal(const std::string& signalName, std::function<void()> callback)
-        // {
-        //     object_->signalCallbacks_[signalName] = [callback](const QVariantList&) { callback(); };
-        //     return *this;
-        // }
-
-        // /**
-        //  * @brief Connect a signal with one argument
-        //  * @param signalName Name of the signal
-        //  * @param callback Function to call when signal is triggered
-        //  */
-        // template<typename T>
-        // inline ObjecObjectBuilder& onSignal(const std::string& signalName, std::function<void(T)> callback)
-        // {
-        //     object_->signalCallbacks_[signalName] = [callback](const QVariantList& args) {
-        //         if (!args.isEmpty()) {
-        //             callback(args[0].value<T>());
-        //         }
-        //     };
-        //     return *this;
-        // }
-
-        // /**
-        //  * @brief Connect a signal with two arguments
-        //  * @param signalName Name of the signal
-        //  * @param callback Function to call when signal is triggered
-        //  */
-        // template<typename T1, typename T2>
-        // inline ObjecObjectBuilder& onSignal(const std::string& signalName, std::function<void(T1, T2)> callback)
-        // {
-        //     object_->signalCallbacks_[signalName] = [callback](const QVariantList& args) {
-        //         if (args.size() >= 2) {
-        //             callback(args[0].value<T1>(), args[1].value<T2>());
-        //         }
-        //     };
-        //     return *this;
-        // }
-
-        // /**
-        //  * @brief Get the stored signal callbacks for connecting to actual QML object
-        //  * @return Map of signal names to callbacks
-        //  */
-        // [[nodiscard]] const std::unordered_map<std::string, SignalCallback>& getSignalCallbacks() const
-        // {
-        //     return object_->signalCallbacks_;
-        // }
-
-        // /**
-        //  * @brief Apply all signal connections to a QML object using QFunctions
-        //  * @param qmlObject The QML object to connect signals to
-        //  * @param qFunctions QFunctions instance for handling connections
-        //  */
     protected:
         std::shared_ptr<TObject> object_ = std::make_shared<TObject>();
         std::shared_ptr<Callbacks> callbacks_ = std::make_shared<Callbacks>();
-        
     };
 } // namespace cloudseal::qqt

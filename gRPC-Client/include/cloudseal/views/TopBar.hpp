@@ -13,24 +13,22 @@ namespace cloudseal::views
         TopBar()
         {
             auto pane = builders::PaneBuilder()
-                .background(
-                    builders::RectangleBuilder()
-                        .color("#2c3e50") // Dark blue color
-                        .build()
-                )
-                .anchors({ .left = "parent.left", .right = "parent.right", .top = "parent.top" })
-                .size({ .height = 32 })
-                .build();
+                            .background(
+                                builders::RectangleBuilder()
+                                    .color("#2c3e50") // Dark blue color
+                                    .build())
+                            .anchors({.left = "parent.left", .right = "parent.right", .top = "parent.top"})
+                            .size({.height = 32})
+                            .build();
 
             auto button = builders::ButtonBuilder()
-                .text("Menu")
-                .size({ .width = 100, .height = 32 })
-                .padding({ .left = 10, .right = 10, .top = 0, .bottom = 0 })
-                .anchors({ .left = "parent.left", .verticalCenter = "parent.verticalCenter" })
-                .callback(Callbacks::Clicked, []() {
-                    std::cout << "Menu button clicked" << std::endl;
-                })
-                .build();
+                              .text("Menu")
+                              .size({.width = 100, .height = 32})
+                              .padding({.left = 10, .right = 10, .top = 0, .bottom = 0})
+                              .anchors({.left = "parent.left", .verticalCenter = "parent.verticalCenter"})
+                              .callback(Callbacks::Clicked, []()
+                                        { std::cout << "Menu button clicked" << std::endl; })
+                              .build();
 
             pane->addChild(button);
             objects_.push_back(pane);

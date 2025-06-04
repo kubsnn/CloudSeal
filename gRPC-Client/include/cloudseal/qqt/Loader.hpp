@@ -16,7 +16,7 @@
 #include <cloudseal/qqt/components/Pane.hpp>
 #include <cloudseal/qqt/components/Rectangle.hpp>
 #include <cloudseal/qqt/Callbacks.hpp>
-#include <cloudseal/qqt/QFunctions.hpp>
+#include <cloudseal/qqt/CallbacksStorage.hpp>
 
 namespace cloudseal::qqt
 {
@@ -126,11 +126,11 @@ namespace cloudseal::qqt
                     auto callbacks = object.releaseCallbacks();
 
                     if (callbacks) {
-                        auto qFunctions = callbacks->build(obj);
+                        auto callbacksStorage = callbacks->build(obj);
 
-                        QObject::connect(obj, &QObject::destroyed, obj, [qFunctions, type = object.type()]() {
-                            delete qFunctions; // Clean up QFunctions when the object is destroyed
-                            log.debug() << "QFunctions for " << type << " destroyed.";
+                        QObject::connect(obj, &QObject::destroyed, obj, [callbacksStorage, type = object.type()]() {
+                            delete callbacksStorage; // Clean up callbacksStorage when the object is destroyed
+                            log.debug() << "callbacksStorage for " << type << " destroyed.";
                         });
                     }
                 }

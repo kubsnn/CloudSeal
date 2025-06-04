@@ -1,13 +1,15 @@
-﻿add_executable(app
+﻿add_subdirectory(qqt)
+
+add_executable(app
     main.cpp
     grpc/client.cpp
     grpc/client.hpp
-    LambdaSlot.hpp
     resources.qrc
     utils/generate_uuid.cpp
 )
 
 target_link_libraries(app PRIVATE
+    qqt
     Qt6::Widgets
     Qt6::Core
     Qt6::Gui

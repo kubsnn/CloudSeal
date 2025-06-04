@@ -1,8 +1,7 @@
 #pragma once
 #include <cloudseal/qqt/builders/ObjectBuilder.hpp>
 #include <cloudseal/qqt/components/Button.hpp>
-#include <functional>
-#include <memory>
+#include <string>
 
 namespace cloudseal::qqt::builders
 {   
@@ -12,10 +11,8 @@ namespace cloudseal::qqt::builders
         ButtonBuilder() = default;
         virtual ~ButtonBuilder() = default;
         
-        constexpr ButtonBuilder& text(const std::string& text) { object_->text = text; return *this; }
-        constexpr ButtonBuilder& icon(const std::string& icon) { object_->icon = icon; return *this; }
-
-       
+        ButtonBuilder& text(const std::string& text);
+        ButtonBuilder& icon(const std::string& icon);
     };
     
 } // namespace cloudseal::qqt::builders

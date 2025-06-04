@@ -2,8 +2,8 @@
 #include <QtCore/QObject>
 #include <functional>
 #include <QtCore/QVariant>
-#include <mutex>
 #include <cloudseal/logger.hpp>
+#include <stdexcept>
 
 namespace cloudseal
 {
@@ -20,19 +20,25 @@ namespace cloudseal
     public slots:
         void call()
         {
-            if (func) {
-                try {
+            if (func)
+            {
+                try
+                {
                     func();
-                } catch (const std::exception& e) {
+                }
+                catch (const std::exception &e)
+                {
                     log.error() << "Exception in LambdaSlot::call: " << e.what();
                 }
-            } else {
+            }
+            else
+            {
                 log.error() << "LambdaSlot::call called but func is not set.";
             }
         }
     };
 
-        class LambdaSlot1 : public QObject
+    class LambdaSlot1 : public QObject
     {
         Q_OBJECT
 
@@ -45,13 +51,19 @@ namespace cloudseal
     public slots:
         void call(QVariant arg)
         {
-            if (func) {
-                try {
+            if (func)
+            {
+                try
+                {
                     func(arg);
-                } catch (const std::exception& e) {
+                }
+                catch (const std::exception &e)
+                {
                     log.error() << "Exception in LambdaSlot::call: " << e.what();
                 }
-            } else {
+            }
+            else
+            {
                 log.error() << "LambdaSlot::call called but func is not set.";
             }
         }
@@ -69,13 +81,19 @@ namespace cloudseal
     public slots:
         void call(QVariant arg1, QVariant arg2)
         {
-            if (func) {
-                try {
+            if (func)
+            {
+                try
+                {
                     func(arg1, arg2);
-                } catch (const std::exception& e) {
+                }
+                catch (const std::exception &e)
+                {
                     log.error() << "Exception in LambdaSlot::call: " << e.what();
                 }
-            } else {
+            }
+            else
+            {
                 log.error() << "LambdaSlot::call called but func is not set.";
             }
         }
@@ -92,13 +110,19 @@ namespace cloudseal
     public slots:
         void call(QVariant arg1, QVariant arg2, QVariant arg3)
         {
-            if (func) {
-                try {
+            if (func)
+            {
+                try
+                {
                     func(arg1, arg2, arg3);
-                } catch (const std::exception& e) {
+                }
+                catch (const std::exception &e)
+                {
                     log.error() << "Exception in LambdaSlot::call: " << e.what();
                 }
-            } else {
+            }
+            else
+            {
                 log.error() << "LambdaSlot::call called but func is not set.";
             }
         }
@@ -114,13 +138,19 @@ namespace cloudseal
     public slots:
         void call(QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4)
         {
-            if (func) {
-                try {
+            if (func)
+            {
+                try
+                {
                     func(arg1, arg2, arg3, arg4);
-                } catch (const std::exception& e) {
+                }
+                catch (const std::exception &e)
+                {
                     log.error() << "Exception in LambdaSlot::call: " << e.what();
                 }
-            } else {
+            }
+            else
+            {
                 log.error() << "LambdaSlot::call called but func is not set.";
             }
         }
