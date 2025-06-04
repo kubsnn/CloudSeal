@@ -2,7 +2,7 @@
 
 namespace cloudseal
 {
-    GUI::GUI(const std::shared_ptr<QQmlApplicationEngine> &engine, int argc, char *argv[])
+    GUI::GUI(const std::shared_ptr<QQmlApplicationEngine>& engine, int argc, char* argv[])
         : engine_(engine), loader_(engine_)
     {
         engine_->load(QUrl::fromLocalFile("main.qml"));
@@ -10,7 +10,7 @@ namespace cloudseal
             return;
     }
 
-    bool GUI::makeView(std::shared_ptr<views::IView> &view)
+    bool GUI::makeView(std::shared_ptr<views::IView>& view)
     {
         if (!view)
         {
@@ -20,11 +20,11 @@ namespace cloudseal
 
         if (view->getObjects().empty())
         {
-            log.error() << "View has no objects to add.";
-            return false;
+            log.warning() << "View has no objects to add.";
+            return true;
         }
 
-        for (auto &object : view->getObjects())
+        for (auto& object : view->getObjects())
         {
             if (!addObject(object))
             {
@@ -36,7 +36,7 @@ namespace cloudseal
         return true;
     }
 
-    bool GUI::addObject(std::shared_ptr<qqt::Object> object, const std::string &parentId)
+    bool GUI::addObject(std::shared_ptr<qqt::Object> object, const std::string& parentId)
     {
         return loader_.createObjects(object, parentId);
     }

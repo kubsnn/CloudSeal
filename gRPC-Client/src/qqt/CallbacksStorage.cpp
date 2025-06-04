@@ -7,9 +7,9 @@
 
 namespace cloudseal::qqt
 {
-    void CallbacksStorage::addCallback0(const char *signalName, std::function<void()> &&callback)
+    void CallbacksStorage::addCallback0(const char* signalName, std::function<void()>&& callback)
     {
-        const QMetaObject *meta = object->metaObject();
+        const QMetaObject* meta = object->metaObject();
         int index = meta->indexOfSignal(signalName);
         if (index != -1)
         {
@@ -35,9 +35,9 @@ namespace cloudseal::qqt
         }
     }
 
-    void CallbacksStorage::addCallback1(const char *signalName, std::function<void(QVariant)> &&callback)
+    void CallbacksStorage::addCallback1(const char* signalName, std::function<void(QVariant)>&& callback)
     {
-        const QMetaObject *meta = object->metaObject();
+        const QMetaObject* meta = object->metaObject();
         int index = meta->indexOfSignal(signalName);
         if (index != -1)
         {
@@ -56,7 +56,7 @@ namespace cloudseal::qqt
 
             lambdas.emplace_back(slotObj);
             log.debug() << "Connected signal" << signalName << "to slot" << slotMetaMethod.methodSignature();
-            for (const auto &lambda : lambdas)
+            for (const auto& lambda : lambdas)
             {
                 log.debug() << "LambdaSlot1 in list:" << lambda->metaObject()->className();
             }

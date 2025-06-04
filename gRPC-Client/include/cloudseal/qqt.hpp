@@ -1,4 +1,6 @@
 #pragma once
+#include <cloudseal/qqt/Object.hpp>
+#include <cloudseal/qqt/builders/ObjectBuilder.hpp>
 #include <cloudseal/qqt/components/Rectangle.hpp>
 #include <cloudseal/qqt/builders/RectangleBuilder.hpp>
 #include <cloudseal/qqt/components/Button.hpp>

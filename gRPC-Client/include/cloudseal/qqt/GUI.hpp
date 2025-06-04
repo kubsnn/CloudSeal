@@ -13,12 +13,12 @@ namespace cloudseal
     public:
         GUI(const std::shared_ptr<QQmlApplicationEngine> &engine, int argc, char *argv[]);
 
-        bool makeView(std::shared_ptr<::cloudseal::views::IView> &view);
+        bool makeView(std::shared_ptr<views::IView> &view);
 
-        bool addObject(std::shared_ptr<::cloudseal::qqt::Object> object, const std::string &parentId = "");
+        bool addObject(std::shared_ptr<qqt::Object> object, const std::string &parentId = "");
 
     private:
         std::shared_ptr<QQmlApplicationEngine> engine_;
-        ::cloudseal::qqt::Loader loader_;
+        qqt::Loader loader_;
     };
 } // namespace cloudseal

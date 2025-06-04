@@ -2,27 +2,27 @@
 
 namespace cloudseal::qqt
 {
-    const std::string &Object::type() const
+    const std::string& Object::type() const
     {
         return type_;
     }
 
-    const std::string &Object::uuid() const
+    const std::string& Object::uuid() const
     {
         return id;
     }
 
-    void Object::addChild(const std::shared_ptr<Object> &child)
+    void Object::addChild(const std::shared_ptr<Object>& child)
     {
         children.push_back(child);
     }
 
-    void Object::addChild(Object &&child)
+    void Object::addChild(Object&& child)
     {
         children.push_back(std::make_shared<Object>(std::move(child)));
     }
 
-    const std::vector<std::shared_ptr<Object>> &Object::getChildren() const
+    const std::vector<std::shared_ptr<Object>>& Object::getChildren() const
     {
         return children;
     }
@@ -46,7 +46,7 @@ namespace cloudseal::qqt
         return nullptr;
     }
 
-    void Object::serialize(nlohmann::json &j) const
+    void Object::serialize(nlohmann::json& j) const
     {
         j = nlohmann::json{
             {"id", id},
@@ -54,10 +54,10 @@ namespace cloudseal::qqt
             {"size", size},
             {"position", position},
             {"layout", layout},
-            {"type", type_}};
+            {"type", type_} };
     }
 
-    const std::string &Object::getQMLString() const
+    const std::string& Object::getQMLString() const
     {
         return qmlString;
     }
