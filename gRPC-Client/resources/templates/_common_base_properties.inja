@@ -1,19 +1,22 @@
-id: {{ id | default("qmlObject") }}
-{% if visible is defined %}
+id: {{ id }}
+{% if isString(visible) %}
 visible: {{ visible }}
 {% endif %}
-{% if x is defined %}
-x: {{ x }}
+{% set hasAnchors = isString(layout.anchors.left) or isString(layout.anchors.right) or isString(layout.anchors.top) or isString(layout.anchors.bottom) or isString(layout.anchors.fill) or isString(layout.anchors.centerIn) %}
+{% if not hasAnchors %}
+{% if isNumber(position.x) %}
+x: {{ position.x }}
 {% endif %}
-{% if y is defined %}
-y: {{ y }}
+{% if isNumber(position.y) %}
+y: {{ position.y }}
 {% endif %}
-{% if width is defined %}
-width: {{ width }}
 {% endif %}
-{% if height is defined %}
-height: {{ height }}
+{% if isNumber(size.width) %}
+width: {{ size.width }}
 {% endif %}
-{% if locale %}
-locale: Qt.locale("{{ locale }}")
+{% if isNumber(size.height) %}
+height: {{ size.height }}
+{% endif %}
+{% if isString(type) %}
+property var objectType: "{{ type }}" // e.g. "Button", "Text", "Image", etc.
 {% endif %}

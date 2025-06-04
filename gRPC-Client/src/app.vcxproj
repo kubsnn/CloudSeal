@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{566C9519-CA13-3722-971C-D00B980156D4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>app</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="do_not_import_user.props" Condition="exists('do_not_import_user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\CODE\CloudSeal\gRPC-Client\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">app.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">app</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\CODE\CloudSeal\gRPC-Client\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">app.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">app</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\CODE\CloudSeal\gRPC-Client\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">app.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">app</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\CODE\CloudSeal\gRPC-Client\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">app.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">app</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_Debug;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtWidgets" /external:I "C:/Qt/6.9.0/msvc2022_64/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtCore" /external:I "C:/Qt/6.9.0/msvc2022_64/mkspecs/win32-msvc" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGui" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQml" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlIntegration" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtNetwork" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQuick" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlMeta" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlModels" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlWorkerScript" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtOpenGL" /external:I "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtProtobuf" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGrpc" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_WIDGETS_LIB;QT_CORE_LIB;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;QT_WIDGETS_LIB;QT_CORE_LIB;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_Debug;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_Debug;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target app</Message>
+      <Command>setlocal
+cd E:\CODE\CloudSeal\gRPC-Client\src
+if %errorlevel% neq 0 goto :cmEnd
+E:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autogen E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/app_autogen.dir/AutogenInfo.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary E:/CODE/CloudSeal/gRPC-Client/Debug/app.exe -installedDir "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/debug/bin" -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\mocs_compilation_Debug.obj;grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\cloudseal_qtprotoreg.obj;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Widgetsd.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Quickd.lib;grpc\Debug\CloudSealProtos.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Grpcd.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlMetad.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlWorkerScriptd.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlModelsd.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Qmld.lib;shell32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6OpenGLd.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Guid.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;user32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Protobufd.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Networkd.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Cored.lib;mpr.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CODE/CloudSeal/gRPC-Client/src/Debug/app.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CODE/CloudSeal/gRPC-Client/Debug/app.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_Release;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtWidgets" /external:I "C:/Qt/6.9.0/msvc2022_64/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtCore" /external:I "C:/Qt/6.9.0/msvc2022_64/mkspecs/win32-msvc" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGui" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQml" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlIntegration" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtNetwork" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQuick" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlMeta" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlModels" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlWorkerScript" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtOpenGL" /external:I "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtProtobuf" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGrpc" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_WIDGETS_LIB;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_WIDGETS_LIB;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_Release;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_Release;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target app</Message>
+      <Command>setlocal
+cd E:\CODE\CloudSeal\gRPC-Client\src
+if %errorlevel% neq 0 goto :cmEnd
+E:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autogen E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/app_autogen.dir/AutogenInfo.json Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary E:/CODE/CloudSeal/gRPC-Client/Release/app.exe -installedDir "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/bin" -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\mocs_compilation_Release.obj;grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\cloudseal_qtprotoreg.obj;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Widgets.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Quick.lib;grpc\Release\CloudSealProtos.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Grpc.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlMeta.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlWorkerScript.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlModels.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Qml.lib;shell32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6OpenGL.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Gui.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;user32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Protobuf.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Network.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Core.lib;mpr.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CODE/CloudSeal/gRPC-Client/src/Release/app.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CODE/CloudSeal/gRPC-Client/Release/app.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_MinSizeRel;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtWidgets" /external:I "C:/Qt/6.9.0/msvc2022_64/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtCore" /external:I "C:/Qt/6.9.0/msvc2022_64/mkspecs/win32-msvc" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGui" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQml" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlIntegration" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtNetwork" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQuick" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlMeta" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlModels" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlWorkerScript" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtOpenGL" /external:I "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtProtobuf" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGrpc" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_WIDGETS_LIB;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_WIDGETS_LIB;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_MinSizeRel;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_MinSizeRel;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target app</Message>
+      <Command>setlocal
+cd E:\CODE\CloudSeal\gRPC-Client\src
+if %errorlevel% neq 0 goto :cmEnd
+E:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autogen E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/app_autogen.dir/AutogenInfo.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary E:/CODE/CloudSeal/gRPC-Client/MinSizeRel/app.exe -installedDir "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/bin" -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\mocs_compilation_MinSizeRel.obj;grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\cloudseal_qtprotoreg.obj;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Widgets.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Quick.lib;grpc\MinSizeRel\CloudSealProtos.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Grpc.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlMeta.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlWorkerScript.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlModels.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Qml.lib;shell32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6OpenGL.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Gui.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;user32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Protobuf.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Network.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Core.lib;mpr.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CODE/CloudSeal/gRPC-Client/src/MinSizeRel/app.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CODE/CloudSeal/gRPC-Client/MinSizeRel/app.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_RelWithDebInfo;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtWidgets" /external:I "C:/Qt/6.9.0/msvc2022_64/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtCore" /external:I "C:/Qt/6.9.0/msvc2022_64/mkspecs/win32-msvc" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGui" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQml" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlIntegration" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtNetwork" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQuick" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlMeta" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlModels" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtQmlWorkerScript" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtOpenGL" /external:I "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/include" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtProtobuf" /external:I "C:/Qt/6.9.0/msvc2022_64/include/QtGrpc" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_WIDGETS_LIB;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_WIDGETS_LIB;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;QT_QML_LIB;QT_QMLINTEGRATION_LIB;QT_NETWORK_LIB;QT_QUICK_LIB;QT_QMLMETA_LIB;QT_QMLMODELS_LIB;QT_QMLWORKERSCRIPT_LIB;QT_OPENGL_LIB;QT_PROTOBUF_LIB;QT_GRPC_LIB;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_RelWithDebInfo;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\include_RelWithDebInfo;E:\CODE\CloudSeal\gRPC-Client\_deps\consolecolors-src\include;E:\CODE\CloudSeal\gRPC-Client\resources;E:\CODE\CloudSeal\gRPC-Client\include;E:\CODE\CloudSeal\gRPC-Client\_deps\inja-src\include;E:\CODE\CloudSeal\gRPC-Client\src\grpc;C:\Qt\6.9.0\msvc2022_64\include\QtWidgets;C:\Qt\6.9.0\msvc2022_64\include;C:\Qt\6.9.0\msvc2022_64\include\QtCore;C:\Qt\6.9.0\msvc2022_64\mkspecs\win32-msvc;C:\Qt\6.9.0\msvc2022_64\include\QtGui;C:\Qt\6.9.0\msvc2022_64\include\QtQml;C:\Qt\6.9.0\msvc2022_64\include\QtQmlIntegration;C:\Qt\6.9.0\msvc2022_64\include\QtNetwork;C:\Qt\6.9.0\msvc2022_64\include\QtQuick;C:\Qt\6.9.0\msvc2022_64\include\QtQmlMeta;C:\Qt\6.9.0\msvc2022_64\include\QtQmlModels;C:\Qt\6.9.0\msvc2022_64\include\QtQmlWorkerScript;C:\Qt\6.9.0\msvc2022_64\include\QtOpenGL;C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\include;C:\Qt\6.9.0\msvc2022_64\include\QtProtobuf;C:\Qt\6.9.0\msvc2022_64\include\QtGrpc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target app</Message>
+      <Command>setlocal
+cd E:\CODE\CloudSeal\gRPC-Client\src
+if %errorlevel% neq 0 goto :cmEnd
+E:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autogen E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/app_autogen.dir/AutogenInfo.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary E:/CODE/CloudSeal/gRPC-Client/RelWithDebInfo/app.exe -installedDir "C:/Users/gkosm/.vcpkg-clion/vcpkg (1)/installed/x64-windows/bin" -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\mocs_compilation_RelWithDebInfo.obj;grpc\CloudSealProtos_qtprotoreg.dir\$(Configuration)\cloudseal_qtprotoreg.obj;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Widgets.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Quick.lib;grpc\RelWithDebInfo\CloudSealProtos.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Grpc.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlMeta.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlWorkerScript.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6QmlModels.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Qml.lib;shell32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6OpenGL.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Gui.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;user32.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Protobuf.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Network.lib;C:\Qt\6.9.0\msvc2022_64\lib\Qt6Core.lib;mpr.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CODE/CloudSeal/gRPC-Client/src/RelWithDebInfo/app.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CODE/CloudSeal/gRPC-Client/RelWithDebInfo/app.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\CODE\CloudSeal\gRPC-Client\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/CODE/CloudSeal/gRPC-Client/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -SE:/CODE/CloudSeal/gRPC-Client -BE:/CODE/CloudSeal/gRPC-Client --check-stamp-file E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\CODE\CloudSeal\gRPC-Client\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/CODE/CloudSeal/gRPC-Client/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -SE:/CODE/CloudSeal/gRPC-Client -BE:/CODE/CloudSeal/gRPC-Client --check-stamp-file E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\CODE\CloudSeal\gRPC-Client\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/CODE/CloudSeal/gRPC-Client/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -SE:/CODE/CloudSeal/gRPC-Client -BE:/CODE/CloudSeal/gRPC-Client --check-stamp-file E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\CODE\CloudSeal\gRPC-Client\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/CODE/CloudSeal/gRPC-Client/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -SE:/CODE/CloudSeal/gRPC-Client -BE:/CODE/CloudSeal/gRPC-Client --check-stamp-file E:/CODE/CloudSeal/gRPC-Client/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\CODE\CloudSeal\gRPC-Client\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_Debug.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\main.cpp" />
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\grpc\client.cpp" />
+    <ClInclude Include="E:\CODE\CloudSeal\gRPC-Client\src\grpc\client.hpp" />
+    <ClInclude Include="E:\CODE\CloudSeal\gRPC-Client\src\LambdaSlot.hpp" />
+    <None Include="E:\CODE\CloudSeal\gRPC-Client\src\resources.qrc">
+    </None>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\utils\generate_uuid.cpp" />
+    <Natvis Include="C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis">
+    </Natvis>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_Release.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_MinSizeRel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\CODE\CloudSeal\gRPC-Client\ZERO_CHECK.vcxproj">
+      <Project>{3292D7BD-6816-3C87-AF01-E6550A05F100}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\CODE\CloudSeal\gRPC-Client\src\grpc\CloudSealProtos.vcxproj">
+      <Project>{B205FFEA-6C06-35DA-8CCB-0B87D6F5568F}</Project>
+      <Name>CloudSealProtos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

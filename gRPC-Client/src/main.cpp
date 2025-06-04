@@ -1,14 +1,31 @@
+#define LOG_TO_FILE 0
+#include <fstream>
+#include <ios>
+#include <iostream>
 #include <nlohmann/json.hpp>
 #include <string>
-#include <utils/utils.hpp>
-#include <iostream>
+#include <QtCore/QObject>
+#include <cloudseal/utils/utils.hpp>
+
+
+#include <cloudseal/App.hpp>
+#include <cloudseal/qqt/jinja/QMLJinja.hpp>
+
+#include <cloudseal/qqt/QFunctions.hpp>
+
+
 using json = nlohmann::json;
 
-int main(int argc, char** argv) {
-	std::string uuid = cloudseal::utils::generate_uuid();
-	std::cout << "UUID: " << uuid << std::endl;
-	json j;
-	j["uuid"] = uuid;
-	std::cout << j.dump(4) << std::endl;
-	return 0;
+int main(int argc, char **argv)
+{
+	// cloudseal::qqt::builders::ButtonBuilder buttonBuilder;
+
+	// auto button = buttonBuilder
+	// 	.text("Click Me")
+	// 	.size({ 200, 50 })
+	// 	.anchors({ .centerIn = "parent" })
+	// 	.padding({ 10, 10, 10, 10 })
+	// 	.build();
+
+	cloudseal::App(argc, argv).exec();
 }

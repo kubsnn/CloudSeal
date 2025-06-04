@@ -1,54 +1,61 @@
-implicitWidth: {{ implicitWidth | default("undefined") }}
-implicitHeight: {{ implicitHeight | default("undefined") }}
+{% if isString(layout.padding.left) %}
+leftPadding: {{ layout.padding.left }}
+{% endif %}
+{% if isString(layout.padding.right) %}
+rightPadding: {{ layout.padding.right }}
+{% endif %}
+{% if isString(layout.padding.top) %}
+topPadding: {{ layout.padding.top }}
+{% endif %}
+{% if isString(layout.padding.bottom) %}
+bottomPadding: {{ layout.padding.bottom }}
+{% endif %}
+{% if isString(layout.inset.left) %}
+leftInset: {{ layout.inset.left }}
+{% endif %}
+{% if isString(layout.inset.right) %}
+rightInset: {{ layout.inset.right }}
+{% endif %}
+{% if isString(layout.inset.top) %}
+topInset: {{ layout.inset.top }}
+{% endif %}
+{% if isString(layout.inset.bottom) %}
+bottomInset: {{ layout.inset.bottom }}
+{% endif %}
+{% if isString(layout.margin.left) %}
+leftMargin: {{ layout.margin.left }}
+{% endif %}
+{% if isString(layout.margin.right) %}
+rightMargin: {{ layout.margin.right }}
+{% endif %}
+{% if isString(layout.margin.top) %}
+topMargin: {{ layout.margin.top }}
+{% endif %}
+{% if isString(layout.margin.bottom) %}
+bottomMargin: {{ layout.margin.bottom }}
+{% endif %}
+{% if isString(layout.anchors.fill) %}
+anchors.fill: {{ layout.anchors.fill }}
+{% endif %}
+{% if isString(layout.anchors.centerIn) %}
+anchors.centerIn: {{ layout.anchors.centerIn }}
+{% endif %}
+{% if isString(layout.anchors.left) %}
+anchors.left: {{ layout.anchors.left }}
+{% endif %}
+{% if isString(layout.anchors.right) %}
+anchors.right: {{ layout.anchors.right }}
+{% endif %}
+{% if isString(layout.anchors.top) %}
+anchors.top: {{ layout.anchors.top }}
+{% endif %}
+{% if isString(layout.anchors.bottom) %}
+anchors.bottom: {{ layout.anchors.bottom }}
+{% endif %}
+{% if isString(layout.anchors.horizontalCenter) %}
+anchors.horizontalCenter: {{ layout.anchors.horizontalCenter }}
+{% endif %}
+{% if isString(layout.anchors.verticalCenter) %}
+anchors.verticalCenter: {{ layout.anchors.verticalCenter }}
+{% endif %}
 
-{% if leftPadding is defined %}
-leftPadding: {{ leftPadding }}
-{% endif %}
-{% if rightPadding is defined %}
-rightPadding: {{ rightPadding }}
-{% endif %}
-{% if topPadding is defined %}
-topPadding: {{ topPadding }}
-{% endif %}
-{% if bottomPadding is defined %}
-bottomPadding: {{ bottomPadding }}
-{% endif %}
-
-{% if leftInset is defined %}
-leftInset: {{ leftInset }}
-{% endif %}
-{% if rightInset is defined %}
-rightInset: {{ rightInset }}
-{% endif %}
-{% if topInset is defined %}
-topInset: {{ topInset }}
-{% endif %}
-{% if bottomInset is defined %}
-bottomInset: {{ bottomInset }}
-{% endif %}
-
-{% if leftMargin is defined %}
-leftMargin: {{ leftMargin }}
-{% endif %}
-{% if rightMargin is defined %}
-rightMargin: {{ rightMargin }}
-{% endif %}
-{% if topMargin is defined %}
-topMargin: {{ topMargin }}
-{% endif %}
-{% if bottomMargin is defined %}
-bottomMargin: {{ bottomMargin }}
-{% endif %}
-
-{% if anchors_fill %}
-anchors.fill: {{ anchors_fill }}
-{% endif %}
-{% if anchors_centerIn %}
-anchors.centerIn: {{ anchors_centerIn }}
-{% endif %}
-{# You can add more specific anchors or use a loop for a dictionary of anchors #}
-{% if anchors and anchors is mapping %}
-{% for anchor_key, anchor_value in anchors.items() %}
-anchors.{{ anchor_key }}: {{ anchor_value }}
-{% endfor %}
-{% endif %}

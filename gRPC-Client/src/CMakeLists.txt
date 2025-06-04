@@ -2,6 +2,7 @@
     main.cpp
     grpc/client.cpp
     grpc/client.hpp
+    LambdaSlot.hpp
     resources.qrc
     utils/generate_uuid.cpp
 )
@@ -20,6 +21,10 @@ target_link_libraries(app PRIVATE
 )
 
 install(TARGETS app RUNTIME DESTINATION bin)
+
+# Instalacja main.qml razem z binarką
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/main.qml" "${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc" DESTINATION bin)
+
 
 # ----  AUTODEPLOY DLL-ek Qt  ----
 if(WIN32)

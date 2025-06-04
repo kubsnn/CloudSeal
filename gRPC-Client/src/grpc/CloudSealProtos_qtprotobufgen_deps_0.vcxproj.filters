@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\CODE\CloudSeal\gRPC-Client\CMakeFiles\402a244fc1398c451f6a463c62e9ca9f\cloudseal.qpb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="E:\CODE\CloudSeal\gRPC-Client\CMakeFiles\82d65c8068066cf267a0bfa5ddbe8efe\CloudSealProtos_qtprotobufgen_deps_0.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="E:\CODE\CloudSeal\gRPC-Client\src\grpc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\CODE\CloudSeal\gRPC-Client\src\grpc\CMakeFiles\CloudSealProtos_qtprotobufgen_deps_0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1D69C49D-BD17-323F-AA2C-F0A6AF7048F3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

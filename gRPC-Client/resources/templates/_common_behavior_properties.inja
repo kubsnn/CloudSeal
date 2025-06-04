@@ -1,4 +1,12 @@
-enabled: {{ enabled | default(true) }}
-focusPolicy: {{ focusPolicy | default("Qt.StrongFocus") }}
-hoverEnabled: {{ hoverEnabled | default(true) }}
-tooltip: {{ tooltip | default("""") }}
+{% if exists("enabled") %}
+enabled: {{ enabled }}
+{% endif %}
+{% if exists("focusPolicy") %}
+focusPolicy: {{ focusPolicy }}
+{% endif %}
+{% if exists("hoverEnabled") %}
+hoverEnabled: {{ hoverEnabled }}
+{% endif %}
+{% if exists("tooltip") %}
+tooltip: {{ tooltip }}
+{% endif %}

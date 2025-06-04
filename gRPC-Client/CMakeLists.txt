@@ -43,6 +43,8 @@ qt_standard_project_setup()
 include_directories(${CMAKE_SOURCE_DIR}/resources)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
+install(DIRECTORY "resources" DESTINATION bin)
+
 add_subdirectory(src/grpc)
 
 add_subdirectory(src)

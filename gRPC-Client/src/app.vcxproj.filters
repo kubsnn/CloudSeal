@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\grpc\client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\utils\generate_uuid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\CODE\CloudSeal\gRPC-Client\src\app_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files\Generated</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\CODE\CloudSeal\gRPC-Client\src\grpc\client.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\CODE\CloudSeal\gRPC-Client\src\LambdaSlot.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\CODE\CloudSeal\gRPC-Client\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\Users\gkosm\.vcpkg-clion\vcpkg (1)\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\CODE\CloudSeal\gRPC-Client\src\resources.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D63B57A6-1C22-3CD0-A22A-96FB6DE30C13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5B4A0F41-1067-3E63-B642-7FC2C9977601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generated">
+      <UniqueIdentifier>{4282A4B8-0310-3530-B83D-A87653AFB78C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
