@@ -2,6 +2,8 @@
 #include <cloudseal/qqt.hpp>
 #include <cloudseal/qqt/Callbacks.hpp>
 #include <cloudseal/views/IView.hpp>
+#include <QApplication>
+#include <QtCore/QMetaMethod>
 
 using namespace cloudseal::qqt;
 
@@ -22,12 +24,19 @@ namespace cloudseal::views
                             .build();
 
             auto button = builders::ButtonBuilder()
-                              .text("Menu")
-                              .size({.width = 100, .height = 32})
-                              .padding({.left = 10, .right = 10, .top = 0, .bottom = 0})
-                              .anchors({.left = "parent.left", .verticalCenter = "parent.verticalCenter"})
+                              .text("✕")
+                              .size({.width = 32, .height = 32})
+                              .padding({.left = 0, .right = 0, .top = 0, .bottom = 0})
+                              .margin({.left = 0, .right = 0, .top = 0, .bottom = 0})
+                              .anchors({.right = "parent.right", .verticalCenter = "parent.verticalCenter"})
+                              .color("#333") // Dark gray color
+                              .colorOnHover("red") // red
+                              .colorOnPress("#c0392b")
                               .callback(Callbacks::Clicked, []()
-                                        { std::cout << "Menu button clicked" << std::endl; })
+                                    { 
+                                        QMetaObject::invokeMethod(QApplication::instance(), "quit", Qt::QueuedConnection);
+                                        QCoreApplication::exit(0); 
+                                    })
                               .build();
 
             pane->addChild(button);

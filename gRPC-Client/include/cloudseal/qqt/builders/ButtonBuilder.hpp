@@ -9,9 +9,11 @@ namespace cloudseal::qqt::builders
     {
     public:
         ButtonBuilder() = default;
-        virtual ~ButtonBuilder() = default;
+
+        virtual ~ButtonBuilder() noexcept = default;
         
         ButtonBuilder& text(const std::string& text);
+
         ButtonBuilder& icon(const std::string& icon);
     };
     

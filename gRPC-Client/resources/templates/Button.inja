@@ -1,21 +1,36 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-Button {
+Pane {
     {% include "_common_base_properties.inja" %}
-    text: "{{ default(text, "Button") }}"
-    flat: {{ default(flat, false) }}
-    display: {{ default(display, "Button.TextBesideIcon") }}
     {% include "_common_behavior_properties.inja" %}
     {% include "_common_layout_properties.inja" %}
-    {% if exists("icon_name") or exists("icon_source") or exists("icon_color") or exists("icon_width") or exists("icon_height") %}
-    icon {
-        {% if exists("icon_name") %}name: "{{ icon_name }}" {% endif %}
-        {% if exists("icon_source") %}source: "{{ icon_source }}" {% endif %}
-        {% if exists("icon_color") %}color: "{{ icon_color }}" {% endif %}
-        {% if exists("icon_width") %}width: {{ icon_width }} {% endif %}
-        {% if exists("icon_height") %}height: {{ icon_height }} {% endif %}
+    property string text: "{{ default(text, "Button") }}"
+    background: Rectangle {
+        color: {{id}}.objectColor
+
+        Behavior on color {
+            ColorAnimation { duration: 200 }
+        }
     }
-    {% endif %}    
-    spacing: {{ default(spacing, 4) }}
+    signal clicked()
+    MouseArea {
+        width: parent.width
+        height: parent.height
+        anchors.centerIn: parent
+        onClicked: {{id}}.clicked()
+        hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
+        onContainsMouseChanged: {
+            {{id}}.background.color = containsMouse ? {{id}}.objectColorOnHover : {{id}}.objectColor
+        }
+        onPressedChanged: {
+            {{id}}.background.color = {{id}}.objectColorOnPress
+        }
+    }
+    Text {
+        anchors.centerIn: parent
+        text: "{{ text }}"
+        font.pixelSize: 16
+    }
 }

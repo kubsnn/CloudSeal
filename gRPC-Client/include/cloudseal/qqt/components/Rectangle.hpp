@@ -19,19 +19,16 @@ namespace cloudseal::qqt
         friend class builders::RectangleBuilder;
         friend class builders::ObjectBuilder<Rectangle>;
 
-        Rectangle() : Object("Rectangle") {}
-        virtual ~Rectangle() = default;
+        inline Rectangle() : Object("Rectangle") {}
 
-        // NLOHMANN_DEFINE_DERIVED_TYPE_INTRUSIVE_WITH_DEFAULT(
-        //     Rectangle, Object,
-        //     text, icon
-        // )
+        virtual ~Rectangle() noexcept = default;
 
-        virtual void serialize(nlohmann::json& j) const override
+        inline virtual void serialize(nlohmann::json& j) const override
         {
             Object::serialize(j);
             j["color"] = color;
         }
+
     private:
         std::optional<std::string> color;
     };

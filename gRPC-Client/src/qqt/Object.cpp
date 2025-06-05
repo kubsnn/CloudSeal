@@ -54,7 +54,11 @@ namespace cloudseal::qqt
             {"size", size},
             {"position", position},
             {"layout", layout},
-            {"type", type_} };
+            {"type", type_} ,
+            {"color", color},
+            {"colorOnHover", colorOnHover},
+            {"colorOnPress", colorOnPress}
+        };
     }
 
     const std::string& Object::getQMLString() const

@@ -6,10 +6,11 @@ namespace cloudseal::qqt::builders
     class RectangleBuilder : public ObjectBuilder<Rectangle>
     {
     public:
-        RectangleBuilder() {
+        inline RectangleBuilder() {
             this->anchors({.fill = "parent"});
         }
-        virtual ~RectangleBuilder() = default;
+        
+        virtual ~RectangleBuilder() noexcept = default;
 
         inline RectangleBuilder& color(const std::string& color)
         {

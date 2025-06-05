@@ -13,6 +13,7 @@ namespace cloudseal::qqt
     namespace builders
     {
         class PaneBuilder;
+
         template <typename TObject>
         class ObjectBuilder;
     }
@@ -23,15 +24,11 @@ namespace cloudseal::qqt
         friend class builders::ObjectBuilder<Pane>;
         friend class builders::ObjectBuilder<Object>;
 
-        Pane() : Object("Pane") {}
-        virtual ~Pane() = default;
+        inline Pane() : Object("Pane") {}
 
-        // NLOHMANN_DEFINE_DERIVED_TYPE_INTRUSIVE_WITH_DEFAULT(
-        //     Pane, Object,
-        //     text, icon
-        // )
+        virtual ~Pane() noexcept = default;
 
-        virtual void serialize(nlohmann::json& j) const override
+        inline virtual void serialize(nlohmann::json& j) const override
         {
             Object::serialize(j);
             j["background"] = background.has_value() ? nlohmann::json(*background) : nullptr;

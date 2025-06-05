@@ -11,7 +11,7 @@ namespace cloudseal::qqt::jinja
     {
     public:
         QMLJinja() = default;
-        virtual ~QMLJinja() = default;
+        virtual ~QMLJinja() noexcept = default;
 
         std::string process(const std::string &filename, std::shared_ptr<const Object> data);
 

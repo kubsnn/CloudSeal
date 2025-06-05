@@ -1,38 +1,38 @@
-{% if isString(layout.padding.left) %}
+{% if isInteger(layout.padding.left) %}
 leftPadding: {{ layout.padding.left }}
 {% endif %}
-{% if isString(layout.padding.right) %}
+{% if isInteger(layout.padding.right) %}
 rightPadding: {{ layout.padding.right }}
 {% endif %}
-{% if isString(layout.padding.top) %}
+{% if isInteger(layout.padding.top) %}
 topPadding: {{ layout.padding.top }}
 {% endif %}
-{% if isString(layout.padding.bottom) %}
+{% if isInteger(layout.padding.bottom) %}
 bottomPadding: {{ layout.padding.bottom }}
 {% endif %}
-{% if isString(layout.inset.left) %}
+{% if isInteger(layout.inset.left) %}
 leftInset: {{ layout.inset.left }}
 {% endif %}
-{% if isString(layout.inset.right) %}
+{% if isInteger(layout.inset.right) %}
 rightInset: {{ layout.inset.right }}
 {% endif %}
-{% if isString(layout.inset.top) %}
+{% if isInteger(layout.inset.top) %}
 topInset: {{ layout.inset.top }}
 {% endif %}
-{% if isString(layout.inset.bottom) %}
+{% if isInteger(layout.inset.bottom) %}
 bottomInset: {{ layout.inset.bottom }}
 {% endif %}
-{% if isString(layout.margin.left) %}
-leftMargin: {{ layout.margin.left }}
+{% if isInteger(layout.margin.left) %}
+anchors.leftMargin: {{ layout.margin.left }}
 {% endif %}
-{% if isString(layout.margin.right) %}
-rightMargin: {{ layout.margin.right }}
+{% if isInteger(layout.margin.right) %}
+anchors.rightMargin: {{ layout.margin.right }}
 {% endif %}
-{% if isString(layout.margin.top) %}
-topMargin: {{ layout.margin.top }}
+{% if isInteger(layout.margin.top) %}
+anchors.topMargin: {{ layout.margin.top }}
 {% endif %}
-{% if isString(layout.margin.bottom) %}
-bottomMargin: {{ layout.margin.bottom }}
+{% if isInteger(layout.margin.bottom) %}
+anchors.bottomMargin: {{ layout.margin.bottom }}
 {% endif %}
 {% if isString(layout.anchors.fill) %}
 anchors.fill: {{ layout.anchors.fill }}

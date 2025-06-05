@@ -16,12 +16,13 @@ namespace cloudseal::qqt::builders
     class ObjectBuilder
     {
     public:
-        virtual ~ObjectBuilder() = default;
+        virtual ~ObjectBuilder() noexcept = default;
 
         [[nodiscard]] inline std::shared_ptr<TObject> build() const {
             
             object_->qmlString = jinja::QMLJinja().process(object_->type(), object_);
             object_->setCallbacks(std::move(callbacks_));
+            log.debug() << "ObjectBuilder::build() - QML String: " << object_->qmlString;
             return object_;
         }
 
@@ -121,6 +122,21 @@ namespace cloudseal::qqt::builders
                 object_->layout = Layout();
             }
             object_->layout.value().margin = Margin{args...};
+            return *this;
+        }
+        inline ObjectBuilder& color(const std::string &color)
+        {
+            object_->color = color;
+            return *this;
+        }
+        inline ObjectBuilder& colorOnHover(const std::string &color)
+        {
+            object_->colorOnHover = color;
+            return *this;
+        }
+        inline ObjectBuilder& colorOnPress(const std::string &color)
+        {
+            object_->colorOnPress = color;
             return *this;
         }
 

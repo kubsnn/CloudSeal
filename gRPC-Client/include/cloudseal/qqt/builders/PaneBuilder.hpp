@@ -8,7 +8,7 @@ namespace cloudseal::qqt::builders
     class PaneBuilder : public ObjectBuilder<Pane>
     {
     public:
-        virtual ~PaneBuilder() = default;
+        virtual ~PaneBuilder() noexcept = default;
 
         inline PaneBuilder& background(const Rectangle& background)
         {

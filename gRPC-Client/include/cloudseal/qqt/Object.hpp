@@ -27,10 +27,10 @@ namespace cloudseal::qqt
         friend class cloudseal::qqt::builders::ObjectBuilder<Object>;
         friend class cloudseal::qqt::Loader;
 
-        Object(const std::string &type)
+        inline Object(const std::string &type)
             : id(utils::generate_uuid()), type_(type) {}
 
-        virtual ~Object() = default;
+        virtual ~Object() noexcept = default;
 
         const std::string &type() const;
 
@@ -59,6 +59,9 @@ namespace cloudseal::qqt
         std::string qmlString;
         std::optional<Layout> layout;
         std::vector<std::shared_ptr<Object>> children;
+        std::optional<std::string> color;
+        std::optional<std::string> colorOnHover;
+        std::optional<std::string> colorOnPress;
 
     private:
         std::string id;

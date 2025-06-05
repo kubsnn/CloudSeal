@@ -20,7 +20,7 @@ namespace cloudseal::qqt
     public:
         Loader(std::shared_ptr<QQmlApplicationEngine> engine);
 
-        virtual ~Loader() = default;
+        virtual ~Loader() noexcept = default;
 
         QObject* get(std::shared_ptr<const Object> object) const;
 

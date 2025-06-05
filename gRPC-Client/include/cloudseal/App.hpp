@@ -27,14 +27,16 @@ namespace cloudseal
 
         int exec()
         {
+            app_->setQuitOnLastWindowClosed(true);
             return app_->exec();
         }
 
-        virtual ~App() = default;
+        virtual ~App() noexcept = default;
  
     protected:
         std::unique_ptr<QGuiApplication> app_;
         std::shared_ptr<QQmlApplicationEngine> engine_;
+
     private:
         std::unique_ptr<GUI> gui_;
         std::shared_ptr<views::IView> mainView_;

@@ -10,15 +10,12 @@
 
 namespace cloudseal::qqt {
     struct Layout {
-        // Layout(Anchors anchors = {}, Padding padding = {}, Inset inset = {}, Margin margin = {})
-        //     : anchors_(anchors), padding_(padding), inset_(inset), margin_(margin)
-        // {}
-
-        virtual ~Layout() = default;
-
         Anchors anchors;
+
         Padding padding;
+
         Inset inset;
+        
         Margin margin;
     };
 

@@ -20,3 +20,12 @@ height: {{ size.height }}
 {% if isString(type) %}
 property var objectType: "{{ type }}" // e.g. "Button", "Text", "Image", etc.
 {% endif %}
+{% if isString(color) %}
+property var objectColor: "{{ color }}"
+{% endif %}
+{% if isString(colorOnHover) %}
+property var objectColorOnHover: "{{ colorOnHover }}"
+{% endif %}
+{% if isString(colorOnPress) %}
+property var objectColorOnPress: "{{ colorOnPress }}"
+{% endif %}

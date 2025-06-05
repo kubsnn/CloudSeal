@@ -117,7 +117,7 @@ namespace cloudseal::qqt {
         QObject::connect(qobj, &QObject::destroyed, qobj, [callbacksStorage, type = object->type()]() {
             delete callbacksStorage; // Clean up callbacksStorage when the object is destroyed
             log.debug() << "callbacksStorage for " << type << " destroyed.";
-            });
+        });
     }
 
     void Loader::updateQObjectParent(Object* object, QObject* obj, const std::string& parentId) const
@@ -126,14 +126,13 @@ namespace cloudseal::qqt {
         if (parent)
         {
             qobject_cast<QQuickItem*>(obj)->setParentItem(qobject_cast<QQuickItem*>(parent));
+            return;
         }
-        else
-        {
-            auto rootObject = engine_->rootObjects().first();
 
-            obj->setParent(rootObject);
-            obj->setProperty("visible", true);
-        }
+        auto rootObject = engine_->rootObjects().first();
+
+        obj->setParent(rootObject);
+        obj->setProperty("visible", true);
     }
 
     void Loader::updatePaneIfRectangle(Object* object, QObject* qobj, const std::string& parentId)
@@ -158,7 +157,7 @@ namespace cloudseal::qqt {
     }
 
 
-    // Dodaj getter dla komponentów
+    // Dodaj getter dla komponentï¿½w
     const std::unordered_map<std::string, QObject*>& Loader::getComponents() const
     {
         return components_;

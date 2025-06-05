@@ -7,7 +7,7 @@ namespace cloudseal::qqt
     class IJsonSerializable
     {
     public:
-        virtual ~IJsonSerializable() = default;
+        virtual ~IJsonSerializable() noexcept = default;
 
         // Convert the object to a JSON representation
         virtual void serialize(nlohmann::json& j) const = 0;
