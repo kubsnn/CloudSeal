@@ -9,6 +9,7 @@ add_library(qqt STATIC
     jinja/QMLJinja.cpp
     # builders
     builders/ButtonBuilder.cpp
+    builders/InputBuilder.cpp
 )
 
 target_link_libraries(qqt PUBLIC

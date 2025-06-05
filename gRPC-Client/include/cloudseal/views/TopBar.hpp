@@ -26,10 +26,8 @@ namespace cloudseal::views
             auto button = builders::ButtonBuilder()
                               .text("✕")
                               .size({.width = 32, .height = 32})
-                              .padding({.left = 0, .right = 0, .top = 0, .bottom = 0})
-                              .margin({.left = 0, .right = 0, .top = 0, .bottom = 0})
                               .anchors({.right = "parent.right", .verticalCenter = "parent.verticalCenter"})
-                              .color("#333") // Dark gray color
+                              .color("#dcdcdc") // Dark gray color
                               .colorOnHover("red") // red
                               .colorOnPress("#c0392b")
                               .callback(Callbacks::Clicked, []()

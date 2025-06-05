@@ -146,11 +146,22 @@ namespace cloudseal {
                 if constexpr (is_debug_build()) logger_.os_ << std::endl;
             }
 
-            template <typename T>
-            inline log_entry_debug& operator<<(const T& value) {
-                if constexpr (is_debug_build()) logger_.os_ << value;
-                return *this;
-            }
+                        template <typename T>
+                        inline log_entry_debug& operator<<(const T& value) {
+            #if defined(QT_CORE_LIB)
+                            if constexpr (is_debug_build()) {
+                                using QByteArrayType = typename std::decay<decltype(value)>::type;
+                                if constexpr (std::is_same<QByteArrayType, QByteArray>::value) {
+                                    logger_.os_ << value.constData();
+                                } else {
+                                    logger_.os_ << value;
+                                }
+                            }
+            #else
+                            if constexpr (is_debug_build()) logger_.os_ << value;
+            #endif
+                            return *this;
+                        }
 
             inline log_entry_debug& operator<<(std::ostream& (*fn)(std::ostream&)) {
                 if constexpr (is_debug_build()) logger_.os_ << fn;

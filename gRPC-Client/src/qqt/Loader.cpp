@@ -71,7 +71,7 @@ namespace cloudseal::qqt {
             return false;
         }
 
-        auto rootObject = engine_->rootObjects().first();
+        auto rootObject = engine_->rootObjects().first()->findChild<QQuickItem*>("root");
 
         QVariant result;
         bool res = QMetaObject::invokeMethod(engine_->rootObjects().first(),
@@ -129,9 +129,9 @@ namespace cloudseal::qqt {
             return;
         }
 
-        auto rootObject = engine_->rootObjects().first();
+        auto rootObject = engine_->rootObjects().first()->findChild<QQuickItem*>("root");
 
-        obj->setParent(rootObject);
+        dynamic_cast<QQuickItem*>(obj)->setParentItem(rootObject);
         obj->setProperty("visible", true);
     }
 

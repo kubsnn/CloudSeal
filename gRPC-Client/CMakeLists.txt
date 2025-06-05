@@ -35,6 +35,11 @@ include_directories(${consolecolors_SOURCE_DIR}/include)
 # Automatyczne generowanie plików Qt
 
 # Znalezienie bibliotek Qt6
+#ustaw Qt6_DIR do katalogu, w którym zainstalowano Qt6
+# Możesz to zrobić poprzez ustawienie zmiennej środowiskowej lub bezpośrednio w CMake
+if(APPLE)
+set(Qt6_DIR "/Users/kosmagasiorowski/Qt/6.9.0/macos/lib/cmake/Qt6")
+endif()
 find_package(Qt6 REQUIRED COMPONENTS Widgets Core Network Gui Qml Quick Grpc Protobuf)
 
 qt_standard_project_setup()

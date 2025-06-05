@@ -36,7 +36,7 @@ namespace cloudseal::grpc {
                     if (auto msg = reply->template read<RespMsg>())
                         result = *msg;
                 }
-                else emit qobject_cast<QObject*>(reply.get())->parent()->findChild<CloudSealClient*>()->error(st.message());
+                else emit qobject_cast<QObject*>(reply.get())->parent()-> template findChild<CloudSealClient*>()->error(st.message());
                 loop.quit();
             });
         loop.exec();

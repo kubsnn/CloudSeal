@@ -8,7 +8,6 @@ Pane {
     property string text: "{{ default(text, "Button") }}"
     background: Rectangle {
         color: {{id}}.objectColor
-
         Behavior on color {
             ColorAnimation { duration: 200 }
         }

@@ -4,6 +4,7 @@
 #include <cloudseal/qqt.hpp>
 
 #include <cloudseal/views/TopBar.hpp>
+#include <cloudseal/qqt/builders/InputBuilder.hpp>
 
 using namespace cloudseal::qqt;
 
@@ -19,6 +20,16 @@ namespace cloudseal::views
             {
                 objects_.push_back(obj);
             }
+            auto input = builders::InputBuilder()
+                .placeholder("Enter text here")
+                .size({.width = 200, .height = 32})
+                .anchors({.centerIn = "parent"})
+                .callback(Callbacks::TextChanged, [](QVariant value)
+                {
+                    log.info() << "Input text changed to: ";
+                })
+                .build();
+            objects_.push_back(input);
         }
 
         std::vector<std::shared_ptr<Object>> getObjects() const override

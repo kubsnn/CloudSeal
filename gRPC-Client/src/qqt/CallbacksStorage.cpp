@@ -14,7 +14,6 @@ namespace cloudseal::qqt
         if (index != -1)
         {
             QMetaMethod signal = meta->method(index);
-            log.debug() << "Signal found:" << signal.methodSignature();
 
             // Tworzymy obiekt-pośrednik z metodą członkowską jako slot
             auto slotObj = std::make_shared<LambdaSlot0>();

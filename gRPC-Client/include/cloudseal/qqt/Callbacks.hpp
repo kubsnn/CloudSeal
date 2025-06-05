@@ -19,7 +19,7 @@ namespace cloudseal::qqt
         constexpr static std::string_view Clicked = "clicked()";
         constexpr static std::string_view Pressed = "pressed()";
         constexpr static std::string_view Released = "released()";
-        constexpr static std::string_view TextChanged = "textChanged(QVariant)";
+        constexpr static std::string_view TextChanged = "textModified(QVariant)";
         constexpr static std::string_view IconChanged = "iconChanged(QVariant)";
         constexpr static std::string_view ValueChanged = "valueChanged(QVariant)";
         

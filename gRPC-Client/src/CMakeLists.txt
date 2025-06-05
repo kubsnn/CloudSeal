@@ -36,3 +36,8 @@ if(WIN32)
     )
     install(SCRIPT ${deploy_script})     # uruchom skrypt podczas 'cmake --install'
 endif()
+if(APPLE)
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/main.qml" DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../src)
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc" DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../src)
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/../resources" DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../src)
+endif()

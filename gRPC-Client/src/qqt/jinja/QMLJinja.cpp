@@ -5,13 +5,17 @@
 #include <inja/inja.hpp>
 #include <fstream>
 #include <stdexcept>
+#include <filesystem>
 
 namespace cloudseal::qqt::jinja
 {
     std::string QMLJinja::process(const std::string &filename, std::shared_ptr<const Object> data)
     {
         // Prepare filename for loading
-        std::string file_path = "resources\\templates\\" + filename + ".inja";
+        std::filesystem::path template_path("resources");
+        template_path /= "templates";
+        template_path /= filename + ".inja";
+        std::string file_path = template_path.string();
         std::string template_str = load_jinja(file_path); // Fixed: use file_path
 
         nlohmann::json json_data = serialized(data); // Serialize the Object to JSON
