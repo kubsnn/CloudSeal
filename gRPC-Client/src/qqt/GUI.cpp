@@ -1,13 +1,15 @@
 #include <cloudseal/qqt/GUI.hpp>
-
+#include <cloudseal/Application.hpp>
 namespace cloudseal
 {
-    GUI::GUI(const std::shared_ptr<QQmlApplicationEngine>& engine, int argc, char* argv[])
-        : engine_(engine), loader_(engine_)
+    GUI::GUI(std::shared_ptr<QQmlApplicationEngine> engine)
+        : engine_(engine), loader_(std::make_shared<qqt::Loader>(engine))
     {
         engine_->load(QUrl::fromLocalFile("main.qml"));
         if (engine_->rootObjects().isEmpty())
             return;
+
+        Application::setLoader(loader_);
     }
 
     bool GUI::makeView(std::shared_ptr<views::IView>& view)
@@ -38,8 +40,6 @@ namespace cloudseal
 
     bool GUI::addObject(std::shared_ptr<qqt::Object> object, const std::string& parentId)
     {
-        return loader_.createObjects(object, parentId);
+        return loader_->createObjects(object, parentId);
     }
-
-    
 }

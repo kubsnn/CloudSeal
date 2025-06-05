@@ -11,7 +11,7 @@ namespace cloudseal
     class GUI
     {
     public:
-        GUI(const std::shared_ptr<QQmlApplicationEngine> &engine, int argc, char *argv[]);
+        GUI(std::shared_ptr<QQmlApplicationEngine> engine);
 
         bool makeView(std::shared_ptr<views::IView> &view);
 
@@ -19,6 +19,6 @@ namespace cloudseal
 
     private:
         std::shared_ptr<QQmlApplicationEngine> engine_;
-        qqt::Loader loader_;
+        std::shared_ptr<qqt::Loader> loader_;
     };
 } // namespace cloudseal

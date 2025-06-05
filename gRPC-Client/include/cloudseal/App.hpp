@@ -12,18 +12,19 @@ namespace cloudseal
     class App {
     public:
         friend class GUI;
-        App(int argc, char* argv[]) : app_(std::make_unique<QGuiApplication>(argc, argv))
+
+        inline App(int argc, char* argv[]) 
+            : app_(std::make_unique<QGuiApplication>(argc, argv))
         {
             engine_ = std::make_unique<QQmlApplicationEngine>();
 
-            gui_ = std::make_unique<GUI>(engine_, argc, argv);
+            gui_ = std::make_unique<GUI>(engine_);
 
             mainView_ = std::make_shared<views::MainView>();
 
             gui_->makeView(mainView_);
 
             int code = exec();
-            
             log.info() << "Application exited with code: " << code;
             if (code != 0) {
                 log.error() << "Application encountered an error and exited with code: " << code;
@@ -32,7 +33,7 @@ namespace cloudseal
             }
         }
 
-        int exec()
+        inline int exec()
         {
             app_->setQuitOnLastWindowClosed(true);
             return app_->exec();
