@@ -5,7 +5,7 @@
 
 namespace cloudseal::qqt::builders
 {   
-    class InputBuilder : public ObjectBuilder<Input>
+    class InputBuilder : public ObjectBuilder<Input, InputBuilder>
     {
     public:
         InputBuilder() = default;

@@ -12,6 +12,7 @@
 #include <cloudseal/qqt/jinja/QMLJinja.hpp>
 
 #include <cloudseal/qqt/CallbacksStorage.hpp>
+#include <cloudseal/qqt/Layout.hpp>
 
 
 using json = nlohmann::json;

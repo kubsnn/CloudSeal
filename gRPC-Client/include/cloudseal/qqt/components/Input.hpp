@@ -10,16 +10,17 @@ namespace cloudseal::qqt
 {
     namespace builders
     {
-        class InputBuilder;
-        template <typename TObject>
+        template <typename TObject, typename TBuilder>
         class ObjectBuilder;
+
+        class InputBuilder;
     }
     class Input : public Object
     {
     public:
+        template <typename, typename>
+        friend class builders::ObjectBuilder;
         friend class builders::InputBuilder;
-        friend class builders::ObjectBuilder<Input>;
-        friend class builders::ObjectBuilder<Object>;
 
         inline Input() : Object("Input") {}
 

@@ -1,5 +1,6 @@
 #include <cloudseal/qqt/GUI.hpp>
 #include <cloudseal/Application.hpp>
+
 namespace cloudseal
 {
     GUI::GUI(std::shared_ptr<QQmlApplicationEngine> engine)
@@ -12,7 +13,7 @@ namespace cloudseal
         Application::setLoader(loader_);
     }
 
-    bool GUI::makeView(std::shared_ptr<views::IView>& view)
+    bool GUI::makeView(std::shared_ptr<views::IView> view)
     {
         if (!view)
         {

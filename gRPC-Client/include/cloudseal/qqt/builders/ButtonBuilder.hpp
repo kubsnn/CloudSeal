@@ -5,7 +5,7 @@
 
 namespace cloudseal::qqt::builders
 {   
-    class ButtonBuilder : public ObjectBuilder<Button>
+	class ButtonBuilder : public ObjectBuilder<Button, ButtonBuilder>
     {
     public:
         ButtonBuilder() = default;

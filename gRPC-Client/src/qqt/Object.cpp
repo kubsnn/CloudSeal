@@ -2,12 +2,12 @@
 
 namespace cloudseal::qqt
 {
-    const std::string& Object::type() const
+    const std::string& Object::type() const noexcept
     {
         return type_;
     }
 
-    const std::string& Object::uuid() const
+    const std::string& Object::uuid() const noexcept
     {
         return id;
     }
@@ -22,20 +22,19 @@ namespace cloudseal::qqt
         children.push_back(std::make_shared<Object>(std::move(child)));
     }
 
-    const std::vector<std::shared_ptr<Object>>& Object::getChildren() const
+    const std::vector<std::shared_ptr<Object>>& Object::getChildren() const noexcept
     {
         return children;
     }
 
-    std::vector<std::shared_ptr<Object>> Object::releaseChildren()
+    std::vector<std::shared_ptr<Object>> Object::releaseChildren() noexcept
     {
         std::vector<std::shared_ptr<Object>> c = std::move(children);
         children.clear();
-        children.shrink_to_fit();
         return c;
     }
 
-    std::shared_ptr<Callbacks> Object::releaseCallbacks()
+    std::shared_ptr<Callbacks> Object::releaseCallbacks() noexcept
     {
         if (callbacks_)
         {
@@ -61,12 +60,12 @@ namespace cloudseal::qqt
         };
     }
 
-    const std::string& Object::getQMLString() const
+    const std::string& Object::getQMLString() const noexcept
     {
         return qmlString;
     }
 
-    void Object::setCallbacks(std::shared_ptr<Callbacks> callbacks)
+    void Object::setCallbacks(std::shared_ptr<Callbacks> callbacks) noexcept
     {
         callbacks_ = std::move(callbacks);
     }

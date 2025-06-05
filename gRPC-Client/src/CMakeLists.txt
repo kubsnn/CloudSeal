@@ -6,6 +6,7 @@ add_executable(app
     grpc/client.hpp
     resources.qrc
     utils/generate_uuid.cpp
+    Application.cpp
 )
 
 target_link_libraries(app PRIVATE

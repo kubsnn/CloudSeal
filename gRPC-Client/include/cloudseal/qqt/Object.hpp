@@ -15,7 +15,7 @@ namespace cloudseal::qqt
 {
     namespace builders
     {
-        template <typename TObject>
+        template <typename TObject, typename TBuilder>
         class ObjectBuilder;
     }
 
@@ -24,7 +24,8 @@ namespace cloudseal::qqt
     class Object : public IJsonSerializable
     {
     public:
-        friend class cloudseal::qqt::builders::ObjectBuilder<Object>;
+        template <typename, typename>
+        friend class cloudseal::qqt::builders::ObjectBuilder;
         friend class cloudseal::qqt::Loader;
 
         inline Object(const std::string &type)
@@ -32,25 +33,25 @@ namespace cloudseal::qqt
 
         virtual ~Object() noexcept = default;
 
-        const std::string &type() const;
+        const std::string &type() const noexcept;
 
-        const std::string &uuid() const;
+        const std::string &uuid() const noexcept;
 
         virtual void addChild(const std::shared_ptr<Object> &child);
 
         virtual void addChild(Object &&child);
 
-        virtual const std::vector<std::shared_ptr<Object>> &getChildren() const;
+        virtual const std::vector<std::shared_ptr<Object>> &getChildren() const noexcept;
 
-        std::vector<std::shared_ptr<Object>> releaseChildren();
+        std::vector<std::shared_ptr<Object>> releaseChildren() noexcept;
 
-        std::shared_ptr<Callbacks> releaseCallbacks();
+        std::shared_ptr<Callbacks> releaseCallbacks() noexcept;
 
         virtual void serialize(nlohmann::json &j) const override;
 
-        const std::string &getQMLString() const;
+        const std::string &getQMLString() const noexcept;
 
-        void setCallbacks(std::shared_ptr<Callbacks> callbacks);
+        void setCallbacks(std::shared_ptr<Callbacks> callbacks) noexcept;
 
     protected:
         bool visible = true;

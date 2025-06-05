@@ -13,7 +13,7 @@ namespace cloudseal
     public:
         GUI(std::shared_ptr<QQmlApplicationEngine> engine);
 
-        bool makeView(std::shared_ptr<views::IView> &view);
+        bool makeView(std::shared_ptr<views::IView> view);
 
         bool addObject(std::shared_ptr<qqt::Object> object, const std::string &parentId = "");
 

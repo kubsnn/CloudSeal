@@ -37,9 +37,11 @@ namespace cloudseal::qqt
     private:
         bool createObject(Object* object, const std::string& parentId = "");
 
-		void addCallbacks(Object* object, QObject* obj) const;
-		void updateQObjectParent(Object* object, QObject* obj, const std::string& parentId) const;
-		void updatePaneIfRectangle(Object* object, QObject* obj, const std::string& parentId);
+        void addCallbacks(Object* object, QObject* obj) const;
+
+        void updateQObjectParent(Object* object, QObject* obj, const std::string& parentId) const;
+
+        void updatePaneIfRectangle(Object* object, QObject* obj, const std::string& parentId);
 
         std::shared_ptr<QQmlApplicationEngine> engine_;
         std::unordered_map<std::string, QObject*> components_;

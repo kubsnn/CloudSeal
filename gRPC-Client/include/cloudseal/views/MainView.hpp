@@ -23,17 +23,17 @@ namespace cloudseal::views
             }
 
             auto pane = builders::PaneBuilder()
+                .anchors({.left = "parent.left", .right = "parent.right", .bottom = "parent.bottom"})
+                .size({.height = 32})
                 .background(
                     builders::RectangleBuilder()
                         .color("#ecf0f1") // Light gray color
                         .build())
-                .anchors({.left = "parent.left", .right = "parent.right", .bottom = "parent.bottom"})
-                .size({.height = 32})
                 .build();
 
             auto input = builders::InputBuilder()
-                .placeholder("Enter text here")
                 .size({.width = 200, .height = 32})
+                .placeholder("Enter text here")
                 .anchors({.centerIn = "parent"})
                 .callback(Callbacks::TextChanged, [id = pane->uuid()](QVariant value)
                 {
@@ -48,7 +48,7 @@ namespace cloudseal::views
             objects_.push_back(pane);
         }
 
-        std::vector<std::shared_ptr<Object>> getObjects() const override
+        const std::vector<std::shared_ptr<Object>>& getObjects() const noexcept override
         {
             return objects_;
         }

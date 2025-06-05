@@ -11,13 +11,17 @@ namespace cloudseal::qqt
 {
     namespace builders
     {
+		template <typename TObject, typename TBuilder>
+		class ObjectBuilder;
+
         class RectangleBuilder;
     }
     class Rectangle : public Object
     {
     public:
+		template <typename, typename>
+        friend class builders::ObjectBuilder;
         friend class builders::RectangleBuilder;
-        friend class builders::ObjectBuilder<Rectangle>;
 
         inline Rectangle() : Object("Rectangle") {}
 

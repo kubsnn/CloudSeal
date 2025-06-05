@@ -5,7 +5,7 @@
 
 namespace cloudseal::qqt::builders
 {
-    class PaneBuilder : public ObjectBuilder<Pane>
+    class PaneBuilder : public ObjectBuilder<Pane, PaneBuilder>
     {
     public:
         virtual ~PaneBuilder() noexcept = default;

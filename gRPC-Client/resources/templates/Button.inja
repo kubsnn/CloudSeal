@@ -13,6 +13,11 @@ Pane {
         }
     }
     signal clicked()
+        Text {
+        anchors.centerIn: parent
+        text: "{{ text }}"
+        font.pixelSize: 16
+    }
     MouseArea {
         width: parent.width
         height: parent.height
@@ -26,10 +31,5 @@ Pane {
         onPressedChanged: {
             {{id}}.background.color = {{id}}.objectColorOnPress
         }
-    }
-    Text {
-        anchors.centerIn: parent
-        text: "{{ text }}"
-        font.pixelSize: 16
     }
 }

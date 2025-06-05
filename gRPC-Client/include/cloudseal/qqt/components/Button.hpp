@@ -10,16 +10,17 @@ namespace cloudseal::qqt
 {
     namespace builders
     {
-        class ButtonBuilder;
-        template <typename TObject>
+        template <typename TObject, typename TBuilder>
         class ObjectBuilder;
+
+        class ButtonBuilder;
     }
     class Button : public Object
     {
     public:
+        template <typename, typename>
+        friend class cloudseal::qqt::builders::ObjectBuilder;
         friend class builders::ButtonBuilder;
-        friend class builders::ObjectBuilder<Button>;
-        friend class builders::ObjectBuilder<Object>;
 
         inline Button() : Object("Button") {}
 

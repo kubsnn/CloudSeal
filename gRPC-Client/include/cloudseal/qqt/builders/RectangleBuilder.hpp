@@ -3,11 +3,12 @@
 
 namespace cloudseal::qqt::builders
 {
-    class RectangleBuilder : public ObjectBuilder<Rectangle>
+    class RectangleBuilder : public ObjectBuilder<Rectangle, RectangleBuilder>
     {
+        using Base = ObjectBuilder<Rectangle, RectangleBuilder>;
     public:
         inline RectangleBuilder() {
-            this->anchors({.fill = "parent"});
+            (void)Base::anchors({.fill = "parent"});
         }
         
         virtual ~RectangleBuilder() noexcept = default;
@@ -17,6 +18,9 @@ namespace cloudseal::qqt::builders
             object_->color = color;
             return *this;
         }
+
+        template<typename... Args>
+        RectangleBuilder& anchors(Args&&...) = delete;
         
     };
 } // namespace cloudseal::qqt::builders

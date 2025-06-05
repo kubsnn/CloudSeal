@@ -14,15 +14,15 @@ namespace cloudseal::qqt
     {
         class PaneBuilder;
 
-        template <typename TObject>
+		template <typename TObject, typename TBuilder>
         class ObjectBuilder;
     }
     class Pane : public Object
     {
     public:
         friend class builders::PaneBuilder;
-        friend class builders::ObjectBuilder<Pane>;
-        friend class builders::ObjectBuilder<Object>;
+		template <typename, typename>
+        friend class builders::ObjectBuilder;
 
         inline Pane() : Object("Pane") {}
 

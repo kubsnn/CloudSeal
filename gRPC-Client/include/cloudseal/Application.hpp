@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cloudseal/logger.hpp>
 #include <cloudseal/qqt/Loader.hpp>
 #include <memory>   
 #include <unordered_map>
@@ -21,8 +20,16 @@ namespace cloudseal
             return loader->getComponents();
         }
 
+        static void exit(int code);
+
+		inline static void reset()
+		{
+			loader.reset();
+		}
+
     private:
-        inline static std::shared_ptr<qqt::Loader> loader{};
         Application() = default;
+
+        inline static std::shared_ptr<qqt::Loader> loader{};
     };
 }

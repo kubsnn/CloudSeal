@@ -10,6 +10,6 @@ namespace cloudseal::views
     public:
         virtual ~IView() noexcept = default;
 
-        virtual std::vector<std::shared_ptr<cloudseal::qqt::Object>> getObjects() const = 0;
+        virtual const std::vector<std::shared_ptr<cloudseal::qqt::Object>>& getObjects() const noexcept = 0;
     };
 } // namespace cloudseal::views
