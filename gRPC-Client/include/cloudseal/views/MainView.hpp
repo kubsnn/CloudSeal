@@ -5,6 +5,7 @@
 
 #include <cloudseal/views/TopBar.hpp>
 #include <cloudseal/qqt/builders/InputBuilder.hpp>
+#include <cloudseal/logger.hpp>
 
 using namespace cloudseal::qqt;
 
@@ -26,7 +27,7 @@ namespace cloudseal::views
                 .anchors({.centerIn = "parent"})
                 .callback(Callbacks::TextChanged, [](QVariant value)
                 {
-                    log.info() << "Input text changed to: ";
+                    log.debug() << "Input text changed to: " << value.toString().toStdString();
                 })
                 .build();
             objects_.push_back(input);

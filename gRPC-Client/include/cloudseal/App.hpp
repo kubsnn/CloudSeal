@@ -22,7 +22,14 @@ namespace cloudseal
 
             gui_->makeView(mainView_);
 
-            log.info() << exec();
+            int code = exec();
+            
+            log.info() << "Application exited with code: " << code;
+            if (code != 0) {
+                log.error() << "Application encountered an error and exited with code: " << code;
+            } else {
+                log.info() << "Application exited successfully.";
+            }
         }
 
         int exec()

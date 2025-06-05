@@ -9,7 +9,7 @@
 
 namespace cloudseal {
 
-	namespace cc = nanochi::cc;
+    namespace cc = nanochi::cc;
 
     class logger final {
     public:
@@ -28,15 +28,15 @@ namespace cloudseal {
         }
 
         inline log_entry info() {
-			return make_log_entry("info", cc::green);
+            return make_log_entry("info", cc::green);
         }
 
         inline log_entry warning() {
-			return make_log_entry("warning", cc::yellow);
+            return make_log_entry("warning", cc::yellow);
         }
 
         inline log_entry error() {
-			return make_log_entry("error", cc::red);
+            return make_log_entry("error", cc::red);
         }
 
         inline log_entry_debug debug() {
@@ -44,9 +44,9 @@ namespace cloudseal {
         }
 
     private:
-		inline log_entry make_log_entry(const char* level, const nanochi::colors::ConsoleColor& color) {
-			return { *this, level, color, current_time_string() };
-		}
+        inline log_entry make_log_entry(const char* level, const nanochi::colors::ConsoleColor& color) {
+            return { *this, level, color, current_time_string() };
+        }
 
         inline std::string current_time_string() const {
             using namespace std::chrono;
@@ -71,20 +71,20 @@ namespace cloudseal {
 
     private:
         static constexpr bool is_debug_build() {
-#if defined(DEBUG_BUILD)                  // Zdefiniowane przez CMake
+#if defined(DEBUG_BUILD)
             return true;
-#elif defined(_DEBUG)                    // MSVC: _DEBUG w trybie debug
+#elif defined(_DEBUG)
             return true;
-#elif !defined(NDEBUG)                   // GCC/Clang: brak NDEBUG => debug
+#elif !defined(NDEBUG)
             return true;
 #else
-            return false;                        // Domyślnie: release
+            return false;
 #endif
         }
 
-		static constexpr bool is_release_build() {
-			return !is_debug_build();
-		}
+        static constexpr bool is_release_build() {
+            return !is_debug_build();
+        }
 
     public:
         class log_entry {
@@ -99,7 +99,6 @@ namespace cloudseal {
             }
 
             inline log_entry(const log_entry&) = delete;
-
             inline log_entry& operator=(const log_entry&) = delete;
 
             inline ~log_entry() {
@@ -139,29 +138,28 @@ namespace cloudseal {
             }
 
             inline log_entry_debug(const log_entry_debug&) = delete;
-
             inline log_entry_debug& operator=(const log_entry_debug&) = delete;
 
             inline ~log_entry_debug() {
                 if constexpr (is_debug_build()) logger_.os_ << std::endl;
             }
 
-                        template <typename T>
-                        inline log_entry_debug& operator<<(const T& value) {
-            #if defined(QT_CORE_LIB)
-                            if constexpr (is_debug_build()) {
-                                using QByteArrayType = typename std::decay<decltype(value)>::type;
-                                if constexpr (std::is_same<QByteArrayType, QByteArray>::value) {
-                                    logger_.os_ << value.constData();
-                                } else {
-                                    logger_.os_ << value;
-                                }
-                            }
-            #else
-                            if constexpr (is_debug_build()) logger_.os_ << value;
-            #endif
-                            return *this;
-                        }
+            template <typename T>
+            inline log_entry_debug& operator<<(const T& value) {
+#if defined(QT_CORE_LIB)
+                if constexpr (is_debug_build()) {
+                    using QByteArrayType = typename std::decay<decltype(value)>::type;
+                    if constexpr (std::is_same<QByteArrayType, QByteArray>::value) {
+                        logger_.os_ << value.constData();
+                    } else {
+                        logger_.os_ << value;
+                    }
+                }
+#else
+                if constexpr (is_debug_build()) logger_.os_ << value;
+#endif
+                return *this;
+            }
 
             inline log_entry_debug& operator<<(std::ostream& (*fn)(std::ostream&)) {
                 if constexpr (is_debug_build()) logger_.os_ << fn;
@@ -175,13 +173,20 @@ namespace cloudseal {
         };
     };
 
+    // Globalna instancja loggera
 #if LOG_TO_FILE == 1
-#include <fstream>
-
     inline std::ofstream _log_file("log.txt", std::ios::app);
-    inline logger log{ _log_file };
+    inline logger _global_logger{ _log_file };
 #else
-    inline logger log{ std::cout };
+    inline logger _global_logger{ std::cout };
 #endif
 
-} // namespace nanochi
+    // Dodana funkcja get_logger()
+    inline logger& get_logger() {
+        return _global_logger;
+    }
+
+    // Zachowanie kompatybilności z poprzednim kodem
+    inline logger& log = _global_logger;
+
+} // namespace cloudseal

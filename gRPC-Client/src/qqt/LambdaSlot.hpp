@@ -55,7 +55,7 @@ namespace cloudseal
             {
                 try
                 {
-                    func(arg);
+                    func(std::move(arg));
                 }
                 catch (const std::exception &e)
                 {
