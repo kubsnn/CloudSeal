@@ -47,10 +47,7 @@ namespace cloudseal::qqt {
             createObject(object.get(), parentId);
         }
 
-        if (children.empty())
-        {
-            return true;
-        }
+        if (children.empty()) return true;
 
         for (auto& child : children)
         {
@@ -71,23 +68,7 @@ namespace cloudseal::qqt {
             return false;
         }
 
-        auto rootObject = engine_->rootObjects().first()->findChild<QQuickItem*>("root");
-
-        QVariant result;
-        bool res = QMetaObject::invokeMethod(engine_->rootObjects().first(),
-            "createDynamicComponentFromString",
-            Qt::DirectConnection,
-            Q_RETURN_ARG(QVariant, result),
-            Q_ARG(QVariant, QString::fromStdString(object->getQMLString()))
-        );
-
-        if (!(res && result.isValid()))
-        {
-            log.error() << "Failed to create component from QML string";
-            return false;
-        }
-
-        auto qobj = result.value<QObject*>();
+        auto qobj = createQObject(object);
 
         if (qobj == nullptr)
         {
@@ -106,6 +87,26 @@ namespace cloudseal::qqt {
 		return true;
     }
 
+    QObject* Loader::createQObject(Object* object)
+    {
+        QVariant result;
+        bool res = QMetaObject::invokeMethod(engine_->rootObjects().first(),
+            "createDynamicComponentFromString",
+            Qt::DirectConnection,
+            Q_RETURN_ARG(QVariant, result),
+            Q_ARG(QVariant, QString::fromStdString(object->getQMLString()))
+        );
+
+        if (!(res && result.isValid()))
+        {
+            log.error() << "Failed to create component from QML string";
+
+            return nullptr;
+        }
+
+        return result.value<QObject*>();
+    }
+
     void Loader::addCallbacks(Object* object, QObject* qobj) const
     {
         auto callbacks = object->releaseCallbacks();
@@ -122,8 +123,7 @@ namespace cloudseal::qqt {
 
     void Loader::updateQObjectParent(Object* object, QObject* obj, const std::string& parentId) const
     {
-        auto parent = getParent(parentId);
-        if (parent)
+        if (auto parent = getParent(parentId))
         {
             qobject_cast<QQuickItem*>(obj)->setParentItem(qobject_cast<QQuickItem*>(parent));
             return;
@@ -144,7 +144,6 @@ namespace cloudseal::qqt {
         }
     }
 
-
     QObject* Loader::getParent(const std::string& parentId) const
     {
         auto it = components_.find(parentId);
@@ -152,7 +151,9 @@ namespace cloudseal::qqt {
         {
             return it->second;
         }
-        log.error() << "Parent with ID " << parentId << " not found.";
+
+        log.warning() << "Parent with ID " << parentId << " not found.";
+
         return nullptr;
     }
 

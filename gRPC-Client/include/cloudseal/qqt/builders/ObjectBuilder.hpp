@@ -70,6 +70,7 @@ namespace cloudseal::qqt::builders
             if (!object_->layout.has_value()) {
                 object_->layout.emplace();
             }
+
             object_->layout.value().anchors = anchors;
 
             return self();
@@ -81,7 +82,9 @@ namespace cloudseal::qqt::builders
             if (!object_->layout.has_value()) {
                 object_->layout.emplace();
             }
+
             object_->layout.value().anchors = Anchors{ args... };
+
             return self();
         }
 
@@ -90,7 +93,9 @@ namespace cloudseal::qqt::builders
             if (!object_->layout.has_value()) {
                 object_->layout.emplace();
             }
+
             object_->layout.value().padding = padding;
+
             return self();
         }
 

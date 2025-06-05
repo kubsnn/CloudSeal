@@ -21,6 +21,16 @@ target_link_libraries(qqt PUBLIC
     pantor::inja
     nlohmann_json::nlohmann_json # Dodaj cel nlohmann_json
 )
+# Wyłącz Code Analysis dla Qt i inja (MSVC only)
+if(MSVC)
+    set_source_files_properties(
+        ${CMAKE_BINARY_DIR}/_deps/inja-src/include/inja/inja.hpp
+        PROPERTIES COMPILE_FLAGS "/analyze-"
+    )
+
+    # Jeśli warningi pochodzą z Qt (w MSVC PATH), też można próbować:
+    target_compile_options(qqt PRIVATE "/analyze-")
+endif()
 
 # Instalacja plików nagłówkowych
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/

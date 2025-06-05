@@ -7,4 +7,4 @@
 #include <cloudseal/qqt/builders/ButtonBuilder.hpp>
 #include <cloudseal/qqt/components/Pane.hpp>
 #include <cloudseal/qqt/builders/PaneBuilder.hpp>
-#include <cloudseal/Application.hpp>
+#include <cloudseal/qqt/Application.hpp>

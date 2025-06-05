@@ -6,7 +6,7 @@ add_executable(app
     grpc/client.hpp
     resources.qrc
     utils/generate_uuid.cpp
-    Application.cpp
+    qqt/Application.cpp
 )
 
 target_link_libraries(app PRIVATE
@@ -22,6 +22,18 @@ target_link_libraries(app PRIVATE
     Qt6::Protobuf        # Qt Protobuf (serializacja obiektów protobuf)
     Qt6::Grpc            # Qt GRPC (obsługa komunikacji gRPC)
 )
+
+# Wyłącz Code Analysis dla Qt i inja (MSVC only)
+if(MSVC)
+    set_source_files_properties(
+        ${CMAKE_BINARY_DIR}/_deps/inja-src/include/inja/inja.hpp
+        PROPERTIES COMPILE_FLAGS "/analyze-"
+    )
+
+    # Jeśli warningi pochodzą z Qt (w MSVC PATH), też można próbować:
+    target_compile_options(app PRIVATE "/analyze-")
+endif()
+
 
 install(TARGETS app RUNTIME DESTINATION bin)
 

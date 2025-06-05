@@ -17,12 +17,16 @@ namespace cloudseal::qqt
 		template <typename TObject, typename TBuilder>
         class ObjectBuilder;
     }
+
+    class Loader;
+
     class Pane : public Object
     {
     public:
-        friend class builders::PaneBuilder;
 		template <typename, typename>
         friend class builders::ObjectBuilder;
+        friend class builders::PaneBuilder;
+		friend class Loader;
 
         inline Pane() : Object("Pane") {}
 
@@ -34,6 +38,7 @@ namespace cloudseal::qqt
             j["background"] = background.has_value() ? nlohmann::json(*background) : nullptr;
         }
 
+	private:
         std::optional<Rectangle> background;
     };
 }

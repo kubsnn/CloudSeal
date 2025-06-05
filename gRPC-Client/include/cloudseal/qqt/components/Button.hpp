@@ -35,6 +35,7 @@ namespace cloudseal::qqt
         
     private:
         std::optional<std::string> text;
+
         std::optional<std::string> icon;
     };
 }

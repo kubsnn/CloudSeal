@@ -1,5 +1,5 @@
 #include <cloudseal/qqt/GUI.hpp>
-#include <cloudseal/Application.hpp>
+#include <cloudseal/qqt/Application.hpp>
 
 namespace cloudseal
 {
@@ -21,13 +21,13 @@ namespace cloudseal
             return false;
         }
 
-        if (view->getObjects().empty())
+        if (view->objects().empty())
         {
             log.warning() << "View has no objects to add.";
             return true;
         }
 
-        for (auto& object : view->getObjects())
+        for (auto& object : view->objects())
         {
             if (!addObject(object))
             {

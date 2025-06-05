@@ -21,6 +21,14 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(inja)
 
+if(TARGET inja::inja)
+    target_compile_options(inja::inja INTERFACE
+        $<$<CXX_COMPILER_ID:GNU>:-w>
+        $<$<CXX_COMPILER_ID:Clang>:-w>
+        $<$<CXX_COMPILER_ID:MSVC>:/w>
+    )
+endif()
+
 # Pobranie i konfiguracja consolecolors
 FetchContent_Declare(
     consolecolors

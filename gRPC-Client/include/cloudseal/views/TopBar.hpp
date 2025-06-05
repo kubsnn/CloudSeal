@@ -38,7 +38,12 @@ namespace cloudseal::views
             objects_.push_back(pane);
         }
 
-        const std::vector<std::shared_ptr<qqt::Object>>& getObjects() const noexcept override
+		constexpr std::string_view name() const noexcept override
+		{
+			return "TopBar";
+		}
+
+        const std::vector<std::shared_ptr<qqt::Object>>& objects() const noexcept override
         {
             return objects_;
         }

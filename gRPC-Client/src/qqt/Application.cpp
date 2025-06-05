@@ -1,4 +1,4 @@
-#include <cloudseal/Application.hpp>
+#include <cloudseal/qqt/Application.hpp>
 #include <QApplication>
 #include <QtCore/QMetaMethod>
 #include <cloudseal/logger.hpp>

@@ -8,8 +8,11 @@ namespace cloudseal::qqt
     struct Inset
     {
         std::optional<int> left;
+
         std::optional<int> right;
+
         std::optional<int> top;
+
         std::optional<int> bottom;
     };
 

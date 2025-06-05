@@ -19,6 +19,7 @@ namespace cloudseal
 
     private:
         std::shared_ptr<QQmlApplicationEngine> engine_;
+
         std::shared_ptr<qqt::Loader> loader_;
     };
 } // namespace cloudseal

@@ -17,10 +17,7 @@ namespace cloudseal::views
         MainView()
         {
             auto topBar = std::make_shared<TopBar>();
-            for (const auto &obj : topBar->getObjects())
-            {
-                objects_.push_back(obj);
-            }
+			useView(topBar);
 
             auto pane = builders::PaneBuilder()
                 .anchors({.left = "parent.left", .right = "parent.right", .bottom = "parent.bottom"})
@@ -48,7 +45,32 @@ namespace cloudseal::views
             objects_.push_back(pane);
         }
 
-        const std::vector<std::shared_ptr<Object>>& getObjects() const noexcept override
+		inline void useView(std::shared_ptr<IView> view)
+		{
+			if (!view)
+			{
+				log.error() << "View is null. (" << view->name() << ")";
+				return;
+			}
+
+			if (view->objects().empty())
+			{
+				log.warning() << "View has no objects to add. (" << view->name() << ")";
+				return;
+			}
+
+			for (const auto& object : view->objects())
+			{
+				objects_.push_back(object);
+			}
+		}
+
+		constexpr std::string_view name() const noexcept override
+		{
+			return "MainView";
+		}
+
+        inline const std::vector<std::shared_ptr<Object>>& objects() const noexcept override
         {
             return objects_;
         }

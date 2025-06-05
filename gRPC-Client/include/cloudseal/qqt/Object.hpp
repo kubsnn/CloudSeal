@@ -53,21 +53,25 @@ namespace cloudseal::qqt
 
         void setCallbacks(std::shared_ptr<Callbacks> callbacks) noexcept;
 
-    protected:
-        bool visible = true;
-        Size size;
-        Point position;
-        std::string qmlString;
-        std::optional<Layout> layout;
-        std::vector<std::shared_ptr<Object>> children;
-        std::optional<std::string> color;
-        std::optional<std::string> colorOnHover;
-        std::optional<std::string> colorOnPress;
-
     private:
         std::string id;
         std::string type_ = "Object";
         std::shared_ptr<Callbacks> callbacks_;
+
+    protected:
+        std::vector<std::shared_ptr<Object>> children;
+
+        std::optional<std::string> color;
+        std::optional<std::string> colorOnHover;
+        std::optional<std::string> colorOnPress;
+        std::optional<Layout> layout;
+
+        std::string qmlString;
+
+        Size size;
+        Point position;
+
+        bool visible = true;
     };
 
     inline nlohmann::json serialized(const Object &obj)

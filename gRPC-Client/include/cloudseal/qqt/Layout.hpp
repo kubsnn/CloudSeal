@@ -9,7 +9,8 @@
 #include <string>
 
 namespace cloudseal::qqt {
-    struct Layout {
+    struct Layout 
+    {
         Anchors anchors;
 
         Padding padding;
