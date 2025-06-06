@@ -3,12 +3,12 @@
 #include <cloudseal/qqt/Object.hpp>
 #include <cloudseal/qqt/structures/Size.hpp>
 #include <cloudseal/qqt/structures/Point.hpp>
-#include <cloudseal/qqt/CallbacksStorage.hpp>
+#include <cloudseal/qqt/callbacks/CallbacksStorage.hpp>
+#include <cloudseal/qqt/callbacks/Callbacks.hpp>
 #include <cloudseal/qqt/jinja/QMLJinja.hpp>
 #include <memory>
 #include <unordered_map>
 #include <functional>
-#include <cloudseal/qqt/Callbacks.hpp>
 
 namespace cloudseal::qqt::builders
 {
@@ -165,7 +165,7 @@ namespace cloudseal::qqt::builders
             return self();
         }
 
-        [[nodiscard]] inline TBuilder& callbacks(std::shared_ptr<Callbacks> callbacks)
+        [[nodiscard]] inline TBuilder& callbacks(std::shared_ptr<callbacks::Callbacks> callbacks)
         {
             callbacks_ = std::move(callbacks);
             return self();
@@ -181,7 +181,7 @@ namespace cloudseal::qqt::builders
 
     protected:
         std::shared_ptr<TObject> object_ = std::make_shared<TObject>();
-        std::shared_ptr<Callbacks> callbacks_ = std::make_shared<Callbacks>();
+        std::shared_ptr<callbacks::Callbacks> callbacks_ = std::make_shared<callbacks::Callbacks>();
 
     private:
         [[nodiscard]] constexpr TBuilder& self() noexcept

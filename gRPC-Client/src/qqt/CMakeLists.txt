@@ -1,9 +1,12 @@
 add_library(qqt STATIC
     Object.cpp
     GUI.cpp
-    CallbacksStorage.cpp
     Loader.cpp
-    LambdaSlot.hpp
+
+    # callbacks
+    callbacks/CallbacksStorage.cpp
+    callbacks/LambdaSlot.hpp
+    callbacks/LambdaSlot.cpp
 
     # jinja
     jinja/QMLJinja.cpp

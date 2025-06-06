@@ -1,11 +1,11 @@
-#include <cloudseal/qqt/CallbacksStorage.hpp>
+#include <cloudseal/qqt/callbacks/CallbacksStorage.hpp>
 #include <QMetaObject>
 #include <QMetaMethod>
 #include <cloudseal/logger.hpp>
-#include <cloudseal/qqt/LambdaSlot.hpp>
+#include <cloudseal/qqt/callbacks/LambdaSlot.hpp>
 #include <string_view>
 
-namespace cloudseal::qqt
+namespace cloudseal::qqt::callbacks
 {
     void CallbacksStorage::addCallback0(const char* signalName, std::function<void()>&& callback)
     {

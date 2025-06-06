@@ -19,12 +19,15 @@ namespace cloudseal::qqt {
     QObject* Loader::get(std::shared_ptr<const Object> object) const
     {
         auto id = object->uuid();
+
         auto it = components_.find(id);
         if (it != components_.end())
         {
             return it->second;
         }
+
         log.error() << "Component with ID " << id << " not found.";
+
         return nullptr;
     }
 

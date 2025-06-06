@@ -1,6 +1,6 @@
 #pragma once
 #include <cloudseal/qqt.hpp>
-#include <cloudseal/qqt/Callbacks.hpp>
+#include <cloudseal/qqt/callbacks/Callbacks.hpp>
 #include <cloudseal/views/IView.hpp>
 #include <QApplication>
 #include <QtCore/QMetaMethod>
@@ -28,7 +28,7 @@ namespace cloudseal::views
                               .color("#dcdcdc") // Dark gray color
                               .colorOnHover("red") // red
                               .colorOnPress("#c0392b")
-                              .callback(qqt::Callbacks::Clicked, []()
+                              .callback(qqt::callbacks::Callbacks::Clicked, []()
                                     {
                                       Application::exit(0);
                                     })

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cloudseal/qqt/LambdaSlot.hpp>
+#include <cloudseal/qqt/callbacks/LambdaSlot.hpp>
 #include <QtCore/QVariant>
 #include <QtCore/QObject>
 #include <memory>
@@ -8,9 +8,9 @@
 #include <functional>
 #include <cloudseal/logger.hpp>
 #include <string_view>
-#include <cloudseal/qqt/CallbacksStorage.hpp>
+#include <cloudseal/qqt/callbacks/CallbacksStorage.hpp>
 
-namespace cloudseal::qqt
+namespace cloudseal::qqt::callbacks
 {
 
     class Callbacks final

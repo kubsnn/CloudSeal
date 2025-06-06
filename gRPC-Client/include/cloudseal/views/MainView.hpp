@@ -1,6 +1,6 @@
 #pragma once
 #include <cloudseal/views/IView.hpp>
-#include <cloudseal/qqt/Callbacks.hpp>
+#include <cloudseal/qqt/callbacks/Callbacks.hpp>
 #include <cloudseal/qqt.hpp>
 
 #include <cloudseal/views/TopBar.hpp>
@@ -32,7 +32,7 @@ namespace cloudseal::views
                 .size({.width = 200, .height = 32})
                 .placeholder("Enter text here")
                 .anchors({.centerIn = "parent"})
-                .callback(Callbacks::TextChanged, [id = pane->uuid()](QVariant value)
+                .callback(callbacks::Callbacks::TextChanged, [id = pane->uuid()](QVariant value)
                 {
                     auto background = Application::components().find(id)->second->property("background").value<QObject*>();
                     if (background)

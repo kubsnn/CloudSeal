@@ -1,0 +1,1 @@
+#include "../../../../src/qqt/callbacks/LambdaSlot.hpp"

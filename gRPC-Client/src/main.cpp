@@ -11,7 +11,7 @@
 #include <cloudseal/App.hpp>
 #include <cloudseal/qqt/jinja/QMLJinja.hpp>
 
-#include <cloudseal/qqt/CallbacksStorage.hpp>
+#include <cloudseal/qqt/callbacks/CallbacksStorage.hpp>
 #include <cloudseal/qqt/Layout.hpp>
 
 

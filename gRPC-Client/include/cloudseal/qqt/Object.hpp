@@ -4,8 +4,8 @@
 #include <cloudseal/qqt/Layout.hpp>
 #include <cloudseal/qqt/structures/Size.hpp>
 #include <cloudseal/qqt/structures/Point.hpp>
-#include <cloudseal/qqt/CallbacksStorage.hpp>
-#include <cloudseal/qqt/Callbacks.hpp>
+#include <cloudseal/qqt/callbacks/CallbacksStorage.hpp>
+#include <cloudseal/qqt/callbacks/Callbacks.hpp>
 #include <string>
 #include <optional>
 #include <vector>
@@ -45,18 +45,18 @@ namespace cloudseal::qqt
 
         std::vector<std::shared_ptr<Object>> releaseChildren() noexcept;
 
-        std::shared_ptr<Callbacks> releaseCallbacks() noexcept;
+        std::shared_ptr<callbacks::Callbacks> releaseCallbacks() noexcept;
 
         virtual void serialize(nlohmann::json &j) const override;
 
         const std::string &getQMLString() const noexcept;
 
-        void setCallbacks(std::shared_ptr<Callbacks> callbacks) noexcept;
+        void setCallbacks(std::shared_ptr<callbacks::Callbacks> callbacks) noexcept;
 
     private:
         std::string id;
         std::string type_ = "Object";
-        std::shared_ptr<Callbacks> callbacks_;
+        std::shared_ptr<callbacks::Callbacks> callbacks_;
 
     protected:
         std::vector<std::shared_ptr<Object>> children;

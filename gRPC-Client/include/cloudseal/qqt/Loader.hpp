@@ -10,8 +10,8 @@
 #include <cloudseal/qqt/Object.hpp>
 #include <cloudseal/qqt/components/Pane.hpp>
 #include <cloudseal/qqt/components/Rectangle.hpp>
-#include <cloudseal/qqt/Callbacks.hpp>
-#include <cloudseal/qqt/CallbacksStorage.hpp>
+#include <cloudseal/qqt/callbacks/Callbacks.hpp>
+#include <cloudseal/qqt/callbacks/CallbacksStorage.hpp>
 
 namespace cloudseal::qqt
 {

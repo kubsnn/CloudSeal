@@ -5,7 +5,7 @@
 #include <QObject>
 #include <QVariant>
 
-namespace cloudseal::qqt
+namespace cloudseal::qqt::callbacks
 {
 
     class CallbacksStorage final

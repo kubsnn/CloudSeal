@@ -34,7 +34,7 @@ namespace cloudseal::qqt
         return c;
     }
 
-    std::shared_ptr<Callbacks> Object::releaseCallbacks() noexcept
+    std::shared_ptr<callbacks::Callbacks> Object::releaseCallbacks() noexcept
     {
         if (callbacks_)
         {
@@ -65,7 +65,7 @@ namespace cloudseal::qqt
         return qmlString;
     }
 
-    void Object::setCallbacks(std::shared_ptr<Callbacks> callbacks) noexcept
+    void Object::setCallbacks(std::shared_ptr<callbacks::Callbacks> callbacks) noexcept
     {
         callbacks_ = std::move(callbacks);
     }
