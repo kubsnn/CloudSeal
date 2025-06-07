@@ -1,15 +1,16 @@
-﻿add_subdirectory(qqt)
+﻿add_subdirectory(utils)
+
+add_subdirectory(qqt)
 
 add_executable(app
     main.cpp
     grpc/client.cpp
     grpc/client.hpp
     resources.qrc
-    utils/generate_uuid.cpp
-    qqt/Application.cpp
 )
 
 target_link_libraries(app PRIVATE
+    utils
     qqt
     Qt6::Widgets
     Qt6::Core

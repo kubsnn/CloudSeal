@@ -6,6 +6,7 @@
 #include <cloudseal/views/TopBar.hpp>
 #include <cloudseal/qqt/builders/InputBuilder.hpp>
 #include <cloudseal/logger.hpp>
+#include <chrono>
 
 using namespace cloudseal::qqt;
 
@@ -41,6 +42,7 @@ namespace cloudseal::views
                     }
                 })
                 .build();
+
             objects_.push_back(input);
             objects_.push_back(pane);
         }

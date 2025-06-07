@@ -12,19 +12,47 @@
 
 namespace cloudseal::qqt::builders
 {
-    template <typename TObject, typename TBuilder>
+	template <typename TObject, typename TBuilder>
     class ObjectBuilder
     {
     public:
+		inline ObjectBuilder()
+			: object_(std::make_shared<TObject>())
+        { 
+			object_->callbacks_ = std::make_shared<callbacks::Callbacks>();
+        }
+
+        inline ObjectBuilder(std::shared_ptr<TObject> object)
+            : object_(std::move(object))
+        { }
+
         virtual ~ObjectBuilder() noexcept = default;
 
         [[nodiscard]] inline std::shared_ptr<TObject> build() const {
 
-            object_->qmlString = jinja::QMLJinja().process(object_->type(), object_);
-            object_->setCallbacks(std::move(callbacks_));
+            object_->qmlString = jinja::process(object_->type(), object_);
+
             log.debug() << "ObjectBuilder::build() - QML String: " << object_->qmlString;
 
             return object_;
+        }
+
+        [[nodiscard]] inline std::shared_ptr<TObject> rebuild() const {
+			if (!object_) {
+				log.error() << "ObjectBuilder::rebuild() - object_ is null";
+				throw std::runtime_error("ObjectBuilder::rebuild() - object_ is null");
+			}
+
+			object_->qmlString = jinja::process(object_->type(), object_);
+
+			log.debug() << "ObjectBuilder::rebuild() - QML String: " << object_->qmlString;
+
+			return object_;
+		}
+
+        [[nodiscard]] inline TObject& get() noexcept
+        {
+            return *object_;
         }
 
         [[nodiscard]] inline TBuilder& visible(bool visible) noexcept
@@ -57,33 +85,30 @@ namespace cloudseal::qqt::builders
 
         [[nodiscard]] inline TBuilder& position(int x, int y) noexcept
         {
-            Point position;
-            position.x = x;
-            position.y = y;
-            object_->position = position;
+			object_->position = Point{ .x = x, .y = y };
 
             return self();
         }
 
-        [[nodiscard]] inline TBuilder& anchors(const Anchors& anchors)
+        [[nodiscard]] inline TBuilder& anchors(Anchors anchors) noexcept
         {
             if (!object_->layout.has_value()) {
                 object_->layout.emplace();
             }
 
-            object_->layout.value().anchors = anchors;
+            object_->layout.value().anchors = std::move(anchors);
 
             return self();
         }
 
-		template <std::convertible_to<int>... TArgs>
+		template <std::convertible_to<std::string>... TArgs>
         [[nodiscard]] inline TBuilder& anchors(TArgs&&... args)
         {
             if (!object_->layout.has_value()) {
                 object_->layout.emplace();
             }
 
-            object_->layout.value().anchors = Anchors{ args... };
+            object_->layout.value().anchors = Anchors{ std::forward<TArgs>(args)... };
 
             return self();
         }
@@ -165,23 +190,29 @@ namespace cloudseal::qqt::builders
             return self();
         }
 
+		// This method overrides the default callbacks storage with a custom one. Even if the object already has a callbacks storage, it will be replaced.
         [[nodiscard]] inline TBuilder& callbacks(std::shared_ptr<callbacks::Callbacks> callbacks)
         {
-            callbacks_ = std::move(callbacks);
+            object_->callbacks_ = std::move(callbacks);
             return self();
         }
 
+		/*
+            This method adds a callback to the existing callbacks storage.If the object does not have a callbacks storage, it will create one.
+        
+            Ones you 
+        */ 
         template <typename F>
         [[nodiscard]] inline TBuilder& callback(std::string_view signal, F&& f)
         {
-            callbacks_->addCallback(signal, std::forward<F>(f));
+            object_->callbacks_->addCallback(signal, std::forward<F>(f));
 
             return self();
         }
 
     protected:
-        std::shared_ptr<TObject> object_ = std::make_shared<TObject>();
-        std::shared_ptr<callbacks::Callbacks> callbacks_ = std::make_shared<callbacks::Callbacks>();
+        std::shared_ptr<TObject> object_;
+        std::shared_ptr<callbacks::Callbacks> callbacks_;
 
     private:
         [[nodiscard]] constexpr TBuilder& self() noexcept

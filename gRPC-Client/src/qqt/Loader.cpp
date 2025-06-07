@@ -9,10 +9,9 @@ namespace cloudseal::qqt {
     Loader::Loader(std::shared_ptr<QQmlApplicationEngine> engine)
         : engine_(std::move(engine))
     {
-        if (engine_->rootObjects().isEmpty())
+        if (engine_->rootObjects().isEmpty()) [[unlikely]]
         {
             log.error() << "No root objects found in the QML engine.";
-            return;
         }
     }
 
@@ -21,17 +20,16 @@ namespace cloudseal::qqt {
         auto id = object->uuid();
 
         auto it = components_.find(id);
-        if (it != components_.end())
+        if (it == components_.end()) [[unlikely]]
         {
-            return it->second;
+            log.error() << "Component with ID " << id << " not found.";
+            return nullptr;
         }
 
-        log.error() << "Component with ID " << id << " not found.";
-
-        return nullptr;
+		return it->second;
     }
 
-    bool Loader::createObjects(std::shared_ptr<Object> object, const std::string& parentId)
+    bool Loader::createObjects(const std::shared_ptr<Object>& object, const std::string& parentId)
     {
         auto children = object->releaseChildren();
 
@@ -40,7 +38,8 @@ namespace cloudseal::qqt {
             auto rect = std::move(pane->background);
             pane->background.reset();
             createObject(object.get(), parentId);
-            if (rect)
+
+            if (rect) [[likely]]
             {
                 createObject(&rect.value(), object->uuid());
             }
@@ -54,18 +53,19 @@ namespace cloudseal::qqt {
 
         for (auto& child : children)
         {
-            if (!createObjects(child, object->uuid()))
+            if (!createObjects(child, object->uuid())) [[unlikely]]
             {
                 log.error() << "Failed to create child object with ID: " << child->uuid();
                 return false;
             }
         }
+
         return true;
     }
 
     bool Loader::createObject(Object* object, const std::string& parentId)
     {
-        if (engine_->rootObjects().isEmpty())
+        if (engine_->rootObjects().isEmpty()) [[unlikely]]
         {
             log.error() << "No root objects found in the QML engine.";
             return false;
@@ -73,7 +73,7 @@ namespace cloudseal::qqt {
 
         auto qobj = createQObject(object);
 
-        if (qobj == nullptr)
+        if (qobj == nullptr) [[unlikely]]
         {
             log.error() << "Returned object is null.";
             return false;
@@ -100,7 +100,7 @@ namespace cloudseal::qqt {
             Q_ARG(QVariant, QString::fromStdString(object->getQMLString()))
         );
 
-        if (!(res && result.isValid()))
+		if (!(res && result.isValid())) [[unlikely]]
         {
             log.error() << "Failed to create component from QML string";
 
@@ -140,24 +140,18 @@ namespace cloudseal::qqt {
 
     void Loader::updatePaneIfRectangle(Object* object, QObject* qobj, const std::string& parentId)
     {
-        if (dynamic_cast<const Rectangle*>(object))
-        {
-            const auto& pane = components_[parentId];
-            pane->setProperty("background", QVariant::fromValue(qobj));
-        }
+        if (!dynamic_cast<const Rectangle*>(object)) [[likely]] return;
+
+        const auto& pane = components_[parentId];
+        pane->setProperty("background", QVariant::fromValue(qobj));
     }
 
     QObject* Loader::getParent(const std::string& parentId) const
     {
         auto it = components_.find(parentId);
-        if (it != components_.end())
-        {
-            return it->second;
-        }
+        if (it == components_.end()) [[unlikely]] return nullptr;
 
-        log.warning() << "Parent with ID " << parentId << " not found.";
-
-        return nullptr;
+        return it->second;
     }
 
 

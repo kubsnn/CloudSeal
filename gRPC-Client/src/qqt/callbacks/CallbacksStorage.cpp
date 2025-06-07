@@ -12,7 +12,7 @@ namespace cloudseal::qqt::callbacks
         const QMetaObject* meta = object->metaObject();
 
         int index = meta->indexOfSignal(signalName);
-        if (index == -1)
+        if (index == -1) [[unlikely]]
         {
             log.error() << "Signal not found: " << signalName;
 			return;
@@ -38,7 +38,7 @@ namespace cloudseal::qqt::callbacks
     {
         const QMetaObject* meta = object->metaObject();
         int index = meta->indexOfSignal(signalName);
-        if (index == -1)
+        if (index == -1) [[unlikely]]
         {
             log.error() << "Signal not found: " << signalName;
             return;

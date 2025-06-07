@@ -41,42 +41,30 @@
 
 #endif
 
+#include <cloudseal/utils/utils.hpp>
+
+namespace {
+	std::filesystem::path template_directory = cloudseal::utils::get_executable_directory() / "resources" / "templates/";
+
+	thread_local inja::Environment environment(template_directory.string());
+}
+
 namespace cloudseal::qqt::jinja
 {
-    std::string QMLJinja::process(const std::string &filename, std::shared_ptr<const Object> data)
+    std::string process(const std::string& filename, std::shared_ptr<const Object> data)
     {
-        // Prepare filename for loading
-        std::filesystem::path template_path("resources");
-        template_path /= "templates";
-        template_path /= filename + ".inja";
-        std::string file_path = template_path.string();
-        std::string template_str = load_jinja(file_path); // Fixed: use file_path
+        auto template_path = template_directory / (filename + ".inja");
 
-        nlohmann::json json_data = serialized(data); // Serialize the Object to JSON
-        // Check if the data is a valid JSON object
-        if (json_data.is_null())
+        std::string template_str = utils::read_file(template_path); 
+
+        nlohmann::json json = serialized(data);
+
+        if (json.is_null()) [[unlikely]]
         {
             throw std::runtime_error("Invalid JSON data provided.");
         }
 
         // Render the template with the JSON data
-        return render(template_str, json_data);
-    }
-
-    std::string QMLJinja::load_jinja(const std::string &template_file_path) const // Renamed parameter for clarity
-    {
-        std::ifstream file(template_file_path);
-        if (!file.is_open())
-        {
-            throw std::runtime_error("Unable to open template file: " + template_file_path);
-        }
-        std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-        return content;
-    }
-
-    std::string QMLJinja::render(const std::string &template_str, const nlohmann::json &data) const
-    {
-        inja::Environment env("resources/templates/");
-        return env.render(template_str, data);
+        return environment.render(template_str, json);
     }
 } // namespace cloudseal::qqt::jainja

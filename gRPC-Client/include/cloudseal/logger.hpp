@@ -39,6 +39,10 @@ namespace cloudseal {
             return make_log_entry("error", cc::red);
         }
 
+        inline log_entry fatal() {
+			return make_log_entry("fatal", cc::bg::red);
+        }
+
         inline log_entry_debug debug() {
             return log_entry_debug{ *this, current_time_string() };
         }
@@ -94,7 +98,7 @@ namespace cloudseal {
             {
                 logger_.os_
                     << cc::white << '[' << cc::gray << timestamp << cc::white << "] "
-                    << '[' << color << prefix << cc::white << "] "
+                    << '[' << color << prefix << cc::reset << cc::white << "] "
                     << cc::reset;
             }
 

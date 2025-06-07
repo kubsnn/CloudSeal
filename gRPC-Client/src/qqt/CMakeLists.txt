@@ -2,6 +2,7 @@ add_library(qqt STATIC
     Object.cpp
     GUI.cpp
     Loader.cpp
+    Application.cpp
 
     # callbacks
     callbacks/CallbacksStorage.cpp
@@ -16,6 +17,7 @@ add_library(qqt STATIC
 )
 
 target_link_libraries(qqt PUBLIC
+    utils
     Qt6::Widgets
     Qt6::Core
     Qt6::Gui

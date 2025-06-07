@@ -22,12 +22,12 @@ namespace cloudseal::qqt::callbacks
         constexpr static std::string_view TextChanged = "textModified(QVariant)";
         constexpr static std::string_view IconChanged = "iconChanged(QVariant)";
         constexpr static std::string_view ValueChanged = "valueChanged(QVariant)";
-        
+
     public:
         Callbacks() = default;
 
         template <typename F>
-        inline void addCallback(std::string_view signal, F &&f)
+        inline void addCallback(std::string_view signal, F&& f)
         {
             using Fn = std::decay_t<F>;
 
@@ -41,16 +41,16 @@ namespace cloudseal::qqt::callbacks
             }
         }
 
-        inline CallbacksStorage* build(QObject *object)
+        inline CallbacksStorage* build(QObject* object)
         {
             auto storage = new CallbacksStorage(object);
 
-            for (auto &&pair : pairs0)
+            for (auto&& pair : pairs0)
             {
                 storage->addCallback0(pair.first.c_str(), std::move(pair.second));
             }
 
-            for (auto &&pair : pairs1)
+            for (auto&& pair : pairs1)
             {
                 storage->addCallback1(pair.first.c_str(), std::move(pair.second));
             }
@@ -62,12 +62,12 @@ namespace cloudseal::qqt::callbacks
         }
 
     private:
-        inline void addCallback0(std::string_view signalName, std::function<void()> &&callback)
+        inline void addCallback0(std::string_view signalName, std::function<void()>&& callback)
         {
             pairs0.emplace_back(signalName, std::move(callback));
         }
 
-        inline void addCallback1(std::string_view signalName, std::function<void(QVariant)> &&callback)
+        inline void addCallback1(std::string_view signalName, std::function<void(QVariant)>&& callback)
         {
             pairs1.emplace_back(signalName, std::move(callback));
         }

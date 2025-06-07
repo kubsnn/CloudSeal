@@ -14,15 +14,19 @@ namespace cloudseal::qqt::callbacks
 
         inline void call(Args... args)
         {
-            if (func) {
-                try {
+            if (func) 
+            {
+                try 
+                {
                     func(std::move(args)...);
                 }
-                catch (const std::exception& e) {
+                catch (const std::exception& e) 
+                {
                     log.error() << "Exception in LambdaSlot::call: " << e.what();
                 }
             }
-            else {
+            else 
+            {
                 log.error() << "LambdaSlot::call called but func is not set.";
             }
         }

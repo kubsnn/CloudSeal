@@ -24,7 +24,7 @@ namespace cloudseal::qqt
 
         QObject* get(std::shared_ptr<const Object> object) const;
 
-        bool createObjects(std::shared_ptr<Object> object, const std::string& parentId = "");
+        bool createObjects(const std::shared_ptr<Object>& object, const std::string& parentId = "");
 
         QObject* getParent(const std::string& parentId) const;
 

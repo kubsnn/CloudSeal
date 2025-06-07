@@ -36,14 +36,13 @@ namespace cloudseal::qqt
 
     std::shared_ptr<callbacks::Callbacks> Object::releaseCallbacks() noexcept
     {
-        if (callbacks_)
-        {
-            auto cb = std::move(callbacks_);
-            callbacks_.reset();
-            return cb;
-        }
-        return nullptr;
+        if (callbacks_ == nullptr) [[unlikely]] return nullptr;
+
+        auto cb = std::move(callbacks_);
+        callbacks_.reset();
+        return cb;
     }
+    
 
     void Object::serialize(nlohmann::json& j) const
     {
