@@ -37,7 +37,7 @@ namespace cloudseal::qqt
     private:
         bool createObject(Object* object, const std::string& parentId = "");
 
-		QObject* createQObject(Object* object);
+        QObject* createQObject(Object* object, const std::string& parentId);
 
         void addCallbacks(Object* object, QObject* obj) const;
 

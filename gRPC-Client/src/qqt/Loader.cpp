@@ -3,6 +3,7 @@
 #include <QtCore/QMetaObject>
 #include <QtCore/QVariant>
 #include <cloudseal/logger.hpp>
+#include <QQmlContext>
 
 namespace cloudseal::qqt {
 
@@ -71,7 +72,7 @@ namespace cloudseal::qqt {
             return false;
         }
 
-        auto qobj = createQObject(object);
+        auto qobj = createQObject(object, parentId);
 
         if (qobj == nullptr) [[unlikely]]
         {
@@ -90,24 +91,44 @@ namespace cloudseal::qqt {
 		return true;
     }
 
-    QObject* Loader::createQObject(Object* object)
+    QObject* Loader::createQObject(Object* object, const std::string& parentId)
     {
-        QVariant result;
-        bool res = QMetaObject::invokeMethod(engine_->rootObjects().first(),
-            "createDynamicComponentFromString",
-            Qt::DirectConnection,
-            Q_RETURN_ARG(QVariant, result),
-            Q_ARG(QVariant, QString::fromStdString(object->getQMLString()))
-        );
+  //      QVariant result;
+  //      bool res = QMetaObject::invokeMethod(engine_->rootObjects().first(),
+  //          "createDynamicComponentFromString",
+  //          Qt::DirectConnection,
+  //          Q_RETURN_ARG(QVariant, result),
+  //          Q_ARG(QVariant, QString::fromStdString(object->getQMLString()))
+  //      );
 
-		if (!(res && result.isValid())) [[unlikely]]
-        {
-            log.error() << "Failed to create component from QML string";
+		//if (!(res && result.isValid())) [[unlikely]]
+  //      {
+  //          log.error() << "Failed to create component from QML string";
 
+  //          return nullptr;
+  //      }
+
+  //      return result.value<QObject*>();
+        QQmlContext* context = new QQmlContext(engine_->rootContext());
+        context->setContextProperty("parent", getParent(parentId));
+
+        QQmlComponent component(engine_.get());
+        component.setData(QString::fromStdString(object->getQMLString()).toUtf8(), QUrl(QString::fromStdString(object->type())));
+
+        if (component.status() != QQmlComponent::Ready) {
+            qWarning() << "Component error:" << component.errors();
             return nullptr;
         }
 
-        return result.value<QObject*>();
+        QObject* qobj = component.create(context);
+
+		if (!qobj) [[unlikely]]
+		{
+			log.error() << "Failed to create object from component.";
+			return nullptr;
+		}
+
+		return qobj;
     }
 
     void Loader::addCallbacks(Object* object, QObject* qobj) const
@@ -126,16 +147,12 @@ namespace cloudseal::qqt {
 
     void Loader::updateQObjectParent(Object* object, QObject* obj, const std::string& parentId) const
     {
-        if (auto parent = getParent(parentId))
-        {
-            qobject_cast<QQuickItem*>(obj)->setParentItem(qobject_cast<QQuickItem*>(parent));
-            return;
-        }
+        auto parent = getParent(parentId);
 
-        auto rootObject = engine_->rootObjects().first()->findChild<QQuickItem*>("root");
+        obj->setParent(parent);
+        qobject_cast<QQuickItem*>(obj)->setParentItem(qobject_cast<QQuickItem*>(parent));
 
-        dynamic_cast<QQuickItem*>(obj)->setParentItem(rootObject);
-        obj->setProperty("visible", true);
+        //obj->setProperty("visible", true);
     }
 
     void Loader::updatePaneIfRectangle(Object* object, QObject* qobj, const std::string& parentId)
@@ -149,7 +166,9 @@ namespace cloudseal::qqt {
     QObject* Loader::getParent(const std::string& parentId) const
     {
         auto it = components_.find(parentId);
-        if (it == components_.end()) [[unlikely]] return nullptr;
+        if (it == components_.end()) [[unlikely]] {
+            return qobject_cast<QObject*>(engine_->rootObjects().first()->findChild<QQuickItem*>("root"));
+        }
 
         return it->second;
     }

@@ -7,11 +7,31 @@
 #include <mutex>
 #include <iomanip>
 
+#if defined(DEBUG_BUILD) || \
+   (defined(_MSC_VER) && defined(_DEBUG)) || \
+   (!defined(_MSC_VER) && !defined(NDEBUG))
+
+#define CLOUDSEAL_LOGGER_DEBUG
+#endif
+
+
 namespace cloudseal {
 
     namespace cc = nanochi::cc;
 
     class logger final {
+        static consteval bool is_debug_build() {
+#if defined(CLOUDSEAL_LOGGER_DEBUG)
+            return true;
+#else
+            return false;
+#endif
+        }
+
+        static consteval bool is_release_build() {
+            return !is_debug_build();
+        }
+
     public:
         class log_entry;
         class log_entry_debug;
@@ -22,7 +42,7 @@ namespace cloudseal {
         inline logger& operator=(const logger&) = delete;
         inline logger& operator=(logger&&) noexcept = delete;
 
-        inline explicit logger(std::ostream& os) noexcept
+        inline explicit logger(::std::ostream& os) noexcept
             : os_(os)
         {
         }
@@ -40,11 +60,16 @@ namespace cloudseal {
         }
 
         inline log_entry fatal() {
-			return make_log_entry("fatal", cc::bg::red);
+            return make_log_entry("fatal", cc::bg::red);
         }
 
         inline log_entry_debug debug() {
-            return log_entry_debug{ *this, current_time_string() };
+            if constexpr (is_debug_build()) {
+                return log_entry_debug{ *this, current_time_string() };
+            }
+            else {
+				return log_entry_debug{ *this };
+            }
         }
 
     private:
@@ -52,48 +77,38 @@ namespace cloudseal {
             return { *this, level, color, current_time_string() };
         }
 
-        inline std::string current_time_string() const {
-            using namespace std::chrono;
+        inline ::std::string_view current_time_string() const noexcept
+        {
+            using namespace ::std::chrono;
 
-            auto now = system_clock::now();
-            std::time_t now_c = system_clock::to_time_t(now);
+            // Jeden bufor na wątek ⇒ brak rywalizacji i zawsze żyje
+            thread_local char buf[9];            // "HH:MM:SS\0"
 
-            std::tm tm;
+            const auto  now = system_clock::now();
+            ::std::time_t now_c = system_clock::to_time_t(now);
+
+            ::std::tm tm;
 #if defined(_MSC_VER)
             localtime_s(&tm, &now_c);
 #else
             localtime_r(&now_c, &tm);
 #endif
 
-            std::ostringstream oss{};
-            oss << std::put_time(&tm, "%H:%M:%S");
-            return oss.str();
+            // Zapisujemy w formacie 8-znakowym
+            ::std::strftime(buf, sizeof(buf), "%H:%M:%S", &tm);
+
+            // Zwracamy widok na gotowy bufor
+            return { buf, 8 };                   // długość bez '\0'
         }
 
-        std::ostream& os_;
-        std::mutex mutex_;
+        ::std::ostream& os_;
+        ::std::mutex mutex_;
 
-    private:
-        static constexpr bool is_debug_build() {
-#if defined(DEBUG_BUILD)
-            return true;
-#elif defined(_DEBUG)
-            return true;
-#elif !defined(NDEBUG)
-            return true;
-#else
-            return false;
-#endif
-        }
-
-        static constexpr bool is_release_build() {
-            return !is_debug_build();
-        }
 
     public:
         class log_entry {
         public:
-            inline log_entry(logger& logger, std::string_view prefix, const nanochi::colors::ConsoleColor& color, const std::string& timestamp)
+            inline log_entry(logger& logger, std::string_view prefix, const nanochi::colors::ConsoleColor& color, std::string_view timestamp)
                 : logger_(logger), lock_(logger.mutex_)
             {
                 logger_.os_
@@ -125,20 +140,28 @@ namespace cloudseal {
             std::lock_guard<std::mutex> lock_;
         };
 
+#if defined(CLOUDSEAL_LOGGER_DEBUG)
         class log_entry_debug {
         public:
-            inline explicit log_entry_debug(logger& logger, const std::string& timestamp)
+            inline explicit log_entry_debug(logger& logger, std::string_view timestamp)
                 : logger_(logger)
-#if defined(DEBUG_BUILD) || defined(_DEBUG) || !defined(NDEBUG)
                 , lock_(logger.mutex_)
-#endif
             {
                 if constexpr (is_debug_build()) {
-                    logger_.os_ 
+                    logger_.os_
                         << cc::white << '[' << cc::gray << timestamp << cc::white << "] "
                         << cc::white << '[' << cc::blue << "debug" << cc::white << "] "
-                        << cc::white;
+                        << cc::reset;
                 }
+            }
+
+            inline explicit log_entry_debug(logger& logger)
+                : logger_(logger)
+				, lock_(logger.mutex_)
+            {
+				if constexpr(is_debug_build()) {
+					logger_.os_ << cc::white << '[' << cc::blue << "debug" << cc::white << "] " << cc::reset;
+				}
             }
 
             inline log_entry_debug(const log_entry_debug&) = delete;
@@ -155,7 +178,8 @@ namespace cloudseal {
                     using QByteArrayType = typename std::decay<decltype(value)>::type;
                     if constexpr (std::is_same<QByteArrayType, QByteArray>::value) {
                         logger_.os_ << value.constData();
-                    } else {
+                    }
+                    else {
                         logger_.os_ << value;
                     }
                 }
@@ -171,10 +195,24 @@ namespace cloudseal {
             }
         private:
             logger& logger_;
-#if defined(DEBUG_BUILD) || defined(_DEBUG) || !defined(NDEBUG)
             std::lock_guard<std::mutex> lock_;
-#endif
         };
+#else
+        class log_entry_debug {
+        public:
+            inline explicit log_entry_debug(logger&, std::string_view) noexcept
+            { }
+
+			inline explicit log_entry_debug(logger&) noexcept
+			{ }
+
+            template <typename T>
+            inline const log_entry_debug& operator<<(T&&) const noexcept {
+                // Nic nie robi, bo logi są odrzucane
+                return *this;
+            }
+        };
+#endif // CLOUDSEAL_LOGGER_DEBUG
     };
 
     // Globalna instancja loggera
@@ -194,3 +232,7 @@ namespace cloudseal {
     inline logger& log = _global_logger;
 
 } // namespace cloudseal
+
+#if defined(CLOUDSEAL_LOGGER_DEBUG)
+#undef CLOUDSEAL_LOGGER_DEBUG
+#endif

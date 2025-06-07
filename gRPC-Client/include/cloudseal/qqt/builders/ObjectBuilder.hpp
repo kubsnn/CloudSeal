@@ -15,6 +15,7 @@ namespace cloudseal::qqt::builders
 	template <typename TObject, typename TBuilder>
     class ObjectBuilder
     {
+		static_assert(std::is_base_of<Object, TObject>::value, "TObject must be derived from Object");
     public:
 		inline ObjectBuilder()
 			: object_(std::make_shared<TObject>())
